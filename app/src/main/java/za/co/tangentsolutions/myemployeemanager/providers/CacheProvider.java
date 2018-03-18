@@ -4,7 +4,6 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import com.google.gson.Gson;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 import za.co.tangentsolutions.myemployeemanager.activities.BaseActivity;
 import za.co.tangentsolutions.myemployeemanager.models.EmployeeListModel;

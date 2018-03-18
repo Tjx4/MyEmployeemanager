@@ -3,14 +3,12 @@ package za.co.tangentsolutions.myemployeemanager.presenters;
 import android.os.AsyncTask;
 import android.view.MenuItem;
 import android.view.View;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import za.co.geartronix.proto_app.Activities.BaseActivity;
-import za.co.geartronix.proto_app.Activities.BaseAsyncActivity;
-import za.co.geartronix.proto_app.Constants.Constants;
+import za.co.tangentsolutions.myemployeemanager.activities.BaseActivity;
+import za.co.tangentsolutions.myemployeemanager.activities.BaseAsyncActivity;
+import za.co.tangentsolutions.myemployeemanager.constants.Constants;
 
 public abstract class BaseAsyncPresenter extends BasePresenter{
 
