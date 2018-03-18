@@ -21,6 +21,18 @@
             android:label="@string/title_activity_employees_dash_board_dashboard"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
+        <activity android:name=".activities.BaseAsyncActivity">
+        </activity>
+        <activity android:name=".activities.BaseChildActivity">
+        </activity>
+        <activity android:name=".activities.BaseSlideMenuActivity">
+        </activity>
+        <activity android:name=".activities.EmloyeeStatsActivity">
+        </activity>
+        <activity android:name=".activities.EmployeeProfileActivity">
+        </activity>
+        <activity android:name=".activities.LoginActivity">
+        </activity>
     </application>
 
 </manifest>
