@@ -79,7 +79,9 @@ public class EmployeesDashBoardActivity extends BaseSlideMenuActivity implements
 
     @Override
     public void onFilterButtonClicked(View view) {
-        filterFragment.dismiss();
+        if(filterFragment != null)
+            filterFragment.dismiss();
+
         getPresenter().setCustomFilters(filterFragment);
     }
 

@@ -52,7 +52,6 @@
             <RadioButton
                 android:id="@+id/rdoFemale"
                 style="@style/genderRadioBtn"
-                android:onClick="onGenderSelected"
                 android:tag="F"
                 android:textColor="@color/textBlack"
                 android:text="@string/female"/>
@@ -61,7 +60,6 @@
                 android:id="@+id/rdoMale"
                 style="@style/genderRadioBtn"
                 android:layout_marginLeft="20dp"
-                android:onClick="onGenderSelected"
                 android:tag="M"
                 android:textColor="@color/textBlack"
                 android:text="@string/male"/>
@@ -77,7 +75,8 @@
     <EditText
         android:id="@+id/txtRace"
         style="@style/filterEditText"
-        android:inputType="text"
+        android:inputType="textPersonName"
+        android:digits="BCIWN"
         android:maxLength="1"
         android:hint="Enter race code"/>
 
