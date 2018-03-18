@@ -2,6 +2,7 @@ package za.co.tangentsolutions.myemployeemanager.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -102,5 +103,15 @@ public class EmployeesDashBoardActivity extends BaseSlideMenuActivity implements
     @Override
     public EmployeesDashboardPresenter getPresenter() {
         return (EmployeesDashboardPresenter)presenter;
+    }
+
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == android.view.KeyEvent.KEYCODE_BACK) {
+            moveTaskToBack(true);
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }

@@ -161,7 +161,6 @@ public class EmployeesDashboardPresenter extends BaseSlideMenuPresenter implemen
         super.doAsyncOperation(currentTusk, actionIndex);
 
         if(isCheckingUpdates) {
-            isCheckingUpdates = false;
             return checkEmployeeListUpdate();
         }
         else if(isCached() && actionIndex == 0){
@@ -189,7 +188,7 @@ public class EmployeesDashboardPresenter extends BaseSlideMenuPresenter implemen
             return;
         }
 
-        if(isListPorpulated){
+        if(isListPorpulated && actionIndex == 0){
             checkAndUpdate();
             return;
         }
@@ -207,7 +206,6 @@ public class EmployeesDashboardPresenter extends BaseSlideMenuPresenter implemen
         }
         else {
             employeesDashBoardView.showHttpCallError(activity.getString((R.string.employees_fetch_error_message)));
-            super.afterAsyncCall(actionIndex);
         }
 
         filters.clear();

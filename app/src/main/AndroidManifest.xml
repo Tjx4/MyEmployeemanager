@@ -27,23 +27,21 @@
             android:windowSoftInputMode="adjustPan">
         </activity>
         <activity
-            android:name=".activities.EmployeesDashBoardActivity"
-            android:label="@string/title_activity_true_employees"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-        <activity
-            android:name=".activities.EmployeeProfileActivity"
+            android:name="za.co.tangentsolutions.myemployeemanager.activities.EmployeeProfileActivity"
             android:parentActivityName=".activities.EmployeesDashBoardActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.EmployeesDashBoardActivity"/>
         </activity>
-        <activity android:name=".activities.EmloyeeStatsActivity"
+        <activity android:name="za.co.tangentsolutions.myemployeemanager.activities.EmloyeeStatsActivity"
                   android:parentActivityName=".activities.EmployeesDashBoardActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.EmployeesDashBoardActivity"/>
         </activity>
 
+        <activity android:name="za.co.tangentsolutions.myemployeemanager.activities.EmployeesDashBoardActivity"
+                  android:label="@string/activity_employees_dashboard"
+                  android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 </manifest>

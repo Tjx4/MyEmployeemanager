@@ -5,7 +5,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
-import za.co.tangentsolutions.myemployeemanager.activities.EmployeesDashBoardActivity;
+
 import za.co.tangentsolutions.myemployeemanager.presenters.EmployeesDashboardPresenter;
 import za.co.tangentsolutions.myemployeemanager.views.EmployeesDashBoardView;
 

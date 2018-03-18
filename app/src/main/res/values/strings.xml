@@ -19,11 +19,9 @@
     <string name="generic_error_message">We are currently experiencing technical issues</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="error_alert_title">Error</string>
-    <string name="title_activity_true_employees">TrueEmployeesActivity</string>
-
+    <string name="activity_employees_dashboard">EmployeesDashboardActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-
     <string name="action_settings">Settings</string>
     <string name="showing_all">Showing :: All</string>
     <string name="loading_your_profile">Loading your profile</string>
