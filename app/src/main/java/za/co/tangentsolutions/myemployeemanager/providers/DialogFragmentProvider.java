@@ -32,6 +32,9 @@ public class DialogFragmentProvider extends DialogFragment {
 
     protected void setViewClickEvents(View[] views) {
         for(View view : views){
+            if(view == null)
+                continue;
+
             view.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v) {

@@ -87,6 +87,12 @@
         <item name="android:inputType">text</item>
     </style>
 
+    <style name="filterEditText" parent="mediumEditText">
+        <item name="android:layout_width">80dp</item>
+        <item name="android:background">@drawable/myemployees_edittext_background</item>
+        <item name="android:layout_marginBottom">10dp</item>
+    </style>
+
     <style name="loginEditText" parent="mediumEditText">
         <item name="android:background">@drawable/myemployees_login_edittext_background</item>
     </style>
@@ -140,4 +146,11 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+
+    <style name="genderRadioBtn" parent="Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="android:textColor">@color/textWhite</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:stepSize">@dimen/medium_plus_font_size</item>
+    </style>
 </resources>

@@ -32,4 +32,7 @@
     <string name="next_review">Next review</string>
     <string name="tax_number">Tax number</string>
     <string name="id_number">Id no</string>
+    <string name="filter_employees">Filter employees</string>
+    <string name="female">Female</string>
+    <string name="male">Male</string>
 </resources>

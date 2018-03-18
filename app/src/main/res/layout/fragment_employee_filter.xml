@@ -1,13 +1,105 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             tools:context="za.co.tangentsolutions.myemployeemanager.fragments.EmployeeFilterFragment">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:padding="20dp"
+              android:background="@color/activityBackground"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              tools:context="za.co.tangentsolutions.myemployeemanager.fragments.EmployeeFilterFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment"/>
+        style="@style/mediumLabel"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="0dp"
+        android:layout_weight="1"
+        android:padding="0dp"
+        android:text="Enter emoloyee filter details"
+        android:textColor="#cccccc"/>
 
-</FrameLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView5"
+            style="@style/mediumLabel"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="0dp"
+            android:layout_weight="1"
+            android:padding="0dp"
+            android:text="*Gender"
+            android:textColor="#cccccc"/>
+
+        <ImageView
+            android:id="@+id/imgGender"
+            android:layout_width="30dp"
+            android:layout_height="23dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="5dp"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/service_arrow"/>
+
+        <RadioGroup
+            android:id="@+id/rdoGroupGender"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rdoFemale"
+                style="@style/genderRadioBtn"
+                android:onClick="onGenderSelected"
+                android:tag="F"
+                android:text="@string/female"/>
+
+            <RadioButton
+                android:id="@+id/rdoMale"
+                style="@style/genderRadioBtn"
+                android:layout_marginLeft="20dp"
+                android:onClick="onGenderSelected"
+                android:tag="M"
+                android:text="@string/male"/>
+
+        </RadioGroup>
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/txtPosition"
+        style="@style/filterEditText"
+        android:hint="Enter postion"/>
+
+    <EditText
+        android:id="@+id/txtStartDateRange"
+        style="@style/filterEditText"
+        android:hint="Enter start date index"/>
+
+    <EditText
+        android:id="@+id/txtUser"
+        style="@style/filterEditText"
+        android:hint="Enter user id"/>
+
+
+    <EditText
+        android:id="@+id/txtBirthDateRange"
+        style="@style/filterEditText"
+        android:hint="Enter birth date range"/>
+
+    <EditText
+        android:id="@+id/txtEmailContains"
+        style="@style/filterEditText"
+        android:hint="Where email contains"/>
+
+    <Button
+        android:id="@+id/btnFilter"
+        style="@style/mediumButton"
+        android:text="Filter Employees"/>
+
+</LinearLayout>

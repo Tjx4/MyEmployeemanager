@@ -13,6 +13,8 @@ import java.util.List;
 import za.co.tangentsolutions.myemployeemanager.R;
 import za.co.tangentsolutions.myemployeemanager.adapters.EmployeesAdapter;
 import za.co.tangentsolutions.myemployeemanager.adapters.EmployeesFilterAdapter;
+import za.co.tangentsolutions.myemployeemanager.fragments.EmployeeFilterFragment;
+import za.co.tangentsolutions.myemployeemanager.fragments.LoadingSpinnerFragment;
 import za.co.tangentsolutions.myemployeemanager.models.EmployeeFilterModel;
 import za.co.tangentsolutions.myemployeemanager.models.EmployeeModel;
 import za.co.tangentsolutions.myemployeemanager.presenters.EmployeesDashboardPresenter;
@@ -48,7 +50,7 @@ public class EmployeesDashBoardActivity extends BaseSlideMenuActivity implements
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 if(position == basicFilters.size() - 1){
-                    // Open advanced filter dialog
+                    openEmployeeFilterDialog();
                 }
                 else{
                     getPresenter().handleOnFilterSpinnerClicked(basicFilters.get(position));
@@ -68,6 +70,11 @@ public class EmployeesDashBoardActivity extends BaseSlideMenuActivity implements
             filtersSpnr.setVisibility(View.GONE);
             dropArraw.setImageResource(R.drawable.drop_down_icon);
         }
+    }
+
+    @Override
+    public void openEmployeeFilterDialog() {
+        showFragmentDialog(getString(R.string.filter_employees), R.layout.fragment_employee_filter, new EmployeeFilterFragment());
     }
 
     @Override
@@ -104,7 +111,6 @@ public class EmployeesDashBoardActivity extends BaseSlideMenuActivity implements
     public EmployeesDashboardPresenter getPresenter() {
         return (EmployeesDashboardPresenter)presenter;
     }
-
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
