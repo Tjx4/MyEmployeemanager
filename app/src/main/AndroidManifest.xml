@@ -29,22 +29,22 @@
             android:windowSoftInputMode="adjustPan">
         </activity>
         <activity
-            android:name=".activities.EmployeesDashBoardDashboardActivity"
+            android:name=".activities.EmployeesDashBoardActivity"
             android:label="@string/title_activity_true_employees"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
             android:name=".activities.EmployeeProfileActivity"
-            android:parentActivityName=".activities.EmployeesDashBoardDashboardActivity">
+            android:parentActivityName=".activities.EmployeesDashBoardActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.EmployeesDashBoardDashboardActivity"/>
+                android:value=".activities.EmployeesDashBoardActivity"/>
         </activity>
         <activity android:name=".activities.EmloyeeStatsActivity"
-                  android:parentActivityName=".activities.EmployeesDashBoardDashboardActivity">
+                  android:parentActivityName=".activities.EmployeesDashBoardActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.EmployeesDashBoardDashboardActivity"/>
+                android:value=".activities.EmployeesDashBoardActivity"/>
         </activity>
 
     </application>

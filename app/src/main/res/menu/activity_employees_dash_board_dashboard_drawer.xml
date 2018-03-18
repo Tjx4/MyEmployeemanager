@@ -5,34 +5,24 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Import"/>
-        <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery"/>
-        <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow"/>
-        <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools"/>
-    </group>
+            android:id="@+id/action_employee_stats"
+            android:icon="@drawable/stats_icon"
+            android:title="View Employee stats"/>
 
-    <item android:title="Communicate">
-        <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share"/>
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send"/>
-        </menu>
-    </item>
+        <item
+            android:id="@+id/action_view_your_profile"
+            android:icon="@drawable/profile_icon"
+            android:title="View your profile"/>
+
+        <item
+            android:id="@+id/action_filter_employees"
+            android:icon="@drawable/filter_icon"
+            android:title="Filter employees"/>
+
+        <item
+            android:id="@+id/action_logout"
+            android:icon="@drawable/logout_icon"
+            android:title="Logout"/>
+    </group>
 
 </menu>

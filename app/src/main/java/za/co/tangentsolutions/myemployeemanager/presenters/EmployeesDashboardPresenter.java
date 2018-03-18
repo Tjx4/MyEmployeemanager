@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import za.co.tangentsolutions.myemployeemanager.activities.EmployeesDashBoardDashboardActivity;
+import za.co.tangentsolutions.myemployeemanager.activities.EmployeesDashBoardActivity;
 import za.co.tangentsolutions.myemployeemanager.models.EmployeeFilterModel;
 import za.co.tangentsolutions.myemployeemanager.models.EmployeeListModel;
 import za.co.tangentsolutions.myemployeemanager.models.EmployeeModel;
@@ -26,7 +26,7 @@ public class EmployeesDashboardPresenter extends BaseSlideMenuPresenter implemen
     private List<EmployeeFilterModel> filters;
     private boolean isListPorpulated;
 
-    public EmployeesDashboardPresenter(EmployeesDashBoardDashboardActivity employeesDashboardActivity) {
+    public EmployeesDashboardPresenter(EmployeesDashBoardActivity employeesDashboardActivity) {
         super(employeesDashboardActivity);
         this.employeesDashBoardView = employeesDashboardActivity;
         filters = new ArrayList<>();

@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import java.util.List;
+import za.co.tangentsolutions.myemployeemanager.R;
 import za.co.tangentsolutions.myemployeemanager.adapters.EmployeesAdapter;
 import za.co.tangentsolutions.myemployeemanager.adapters.EmployeesFilterAdapter;
 import za.co.tangentsolutions.myemployeemanager.models.EmployeeFilterModel;
@@ -17,7 +18,7 @@ import za.co.tangentsolutions.myemployeemanager.presenters.EmployeesDashboardPre
 import za.co.tangentsolutions.myemployeemanager.providers.EmployeeProfileProvider;
 import za.co.tangentsolutions.myemployeemanager.views.EmployeesDashBoardView;
 
-public class EmployeesDashBoardDashboardActivity extends BaseSlideMenuActivity implements EmployeesDashBoardView {
+public class EmployeesDashBoardActivity extends BaseSlideMenuActivity implements EmployeesDashBoardView {
     private ListView employeesListView, filtersSpnr;
     private ImageView dropArraw;
     private TextView filterTitleTxt;
@@ -25,8 +26,8 @@ public class EmployeesDashBoardDashboardActivity extends BaseSlideMenuActivity i
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_employees_dashboard);
-        setSlideMenuDependencies(this, "Employee list", R.layout.content_employees);
+        setContentView(R.layout.activity_employees_dash_board);
+        setSlideMenuDependencies(this, "Employee list", R.layout.content_employees_dash_board_dashboard);
         parentLayout = getMainLayout();
         employeesListView = findViewById(R.id.lstEmployeeList);
         filtersSpnr = findViewById(R.id.lstFilters);

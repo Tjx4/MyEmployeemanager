@@ -7,7 +7,7 @@ import za.co.tangentsolutions.myemployeemanager.views.BaseAsyncView;
 public abstract class BaseAsyncActivity extends BaseActivity implements BaseAsyncView {
 
     public void showLoadingDialogFragment(String loadingMessage) {
-        showFragmentDialog(loadingMessage, R.layout.loading_spinner, new LoadingSpinnerFragment());
+        showFragmentDialog(loadingMessage, R.layout.fragment_loading_spinner, new LoadingSpinnerFragment());
     }
 
     public void hideLoadingDialogFragment() {
@@ -39,5 +39,4 @@ public abstract class BaseAsyncActivity extends BaseActivity implements BaseAsyn
 
         showAlertDialogErrorMessage(getString(R.string.error_alert_title), errorMessage);
     }
-
 }

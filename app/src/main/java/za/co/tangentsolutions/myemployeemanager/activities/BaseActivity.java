@@ -27,7 +27,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (this.getClass() == EmployeesDashBoardDashboardActivity.class) {
+        if (this.getClass() == EmployeesDashBoardActivity.class) {
             slideInActivity();
         } else {
             slideOutActivity();
@@ -153,7 +153,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
     }
 
     protected void goToEmployeesDashboard(Bundle... payload) {
-        goToActivityWithPayload(EmployeesDashBoardDashboardActivity.class, payload);
+        goToActivityWithPayload(EmployeesDashBoardActivity.class, payload);
     }
 
     protected void showFragmentDialog(String title, int Layout, DialogFragmentProvider newFragment) {
