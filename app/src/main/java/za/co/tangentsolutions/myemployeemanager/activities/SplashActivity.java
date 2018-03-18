@@ -1,7 +1,9 @@
-package za.co.tangentsolutions.myemployeemanager;
+package za.co.tangentsolutions.myemployeemanager.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import za.co.tangentsolutions.myemployeemanager.R;
 
 public class SplashActivity extends AppCompatActivity {
 
