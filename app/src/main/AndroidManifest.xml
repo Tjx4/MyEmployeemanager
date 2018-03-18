@@ -16,6 +16,14 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".activities.EmloyeeStatsActivity">
+        </activity>
+        <activity android:name=".activities.EmployeeProfileActivity">
+        </activity>
+        <activity android:name=".activities.EmployeesDashBoardDashboardActivity">
+        </activity>
+        <activity android:name=".activities.LoginActivity">
+        </activity>
     </application>
 
 </manifest>
