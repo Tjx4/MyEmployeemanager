@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/rltvUserSelect"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#F1F1F1"
+                android:gravity="center"
+                android:paddingBottom="4dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="9dp"
+                android:paddingTop="4dp">
+
+    <FrameLayout
+        android:id="@+id/frmProfPicContainer"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:background="@android:color/transparent">
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/employeePicContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:elevation="5dp"
+            android:innerRadius="0dp"
+            android:shape="ring"
+            android:thicknessRatio="1.9"
+            app:cardBackgroundColor="@color/usersIconBgColor"
+            app:cardCornerRadius="25dp">
+
+            <ImageView
+                android:id="@+id/imgProfPic"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:scaleType="fitCenter"
+                app:srcCompat="@mipmap/user_icon">
+            </ImageView>
+        </android.support.v7.widget.CardView>
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/txtEmployeeName"
+        style="@style/mediumLabel"
+        android:layout_centerVertical="true"
+        android:layout_margin="0dp"
+        android:layout_toEndOf="@+id/frmProfPicContainer"
+        android:layout_toLeftOf="@+id/imgShev"
+        android:layout_toRightOf="@+id/frmProfPicContainer"
+        android:layout_toStartOf="@+id/imgShev"
+        android:gravity="start"
+        android:paddingEnd="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingStart="10dp"
+        android:text="Employee name"
+        android:textAlignment="textStart"
+        android:textColor="@color/textBlack"/>
+
+
+    <ImageView
+        android:id="@+id/imgShev"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/employee_shev"/>
+</RelativeLayout>
