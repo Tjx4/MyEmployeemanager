@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#0088cc</color>
+    <color name="colorPrimaryDark">#000</color>
+    <color name="colorAccent">#333333</color>
+    <color name="colorTransParent">#00FFFFFF</color>
+    <color name="activityBackground">#FFFFFF</color>
+    <color name="textWhite">#EEEEEE</color>
+    <color name="textWhite2">#DDDDDD</color>
+    <color name="textBlack">#111111</color>
+    <color name="textBlack2">#333333</color>
+    <color name="buttonBackground">#26AE61</color>
+    <color name="buttonBorderColor">#156636</color>
+    <color name="loginEditTextBorderColor">#FFFFFF</color>
+    <color name="transBlack">#b10d0707</color>
+    <color name="transBlack2">#640d0808</color>
+    <color name="usersIconBgColor">#DDDDDD</color>
 </resources>
