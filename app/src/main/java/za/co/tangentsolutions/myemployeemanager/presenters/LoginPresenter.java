@@ -2,21 +2,18 @@ package za.co.tangentsolutions.myemployeemanager.presenters;
 
 import android.os.Bundle;
 import android.view.View;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.IOException;
-
-import za.co.geartronix.proto_app.Activities.LoginActivity;
-import za.co.geartronix.proto_app.Models.LoginModel;
-import za.co.geartronix.proto_app.Models.UserModel;
-import za.co.geartronix.proto_app.Providers.HttpConnectionProvider;
-import za.co.geartronix.proto_app.Providers.RestServiceProvider;
-import za.co.geartronix.proto_app.R;
-import za.co.geartronix.proto_app.Views.LoginView;
-import za.co.geartronix.proto_app.contracts.LoginPresenterContract;
+import za.co.tangentsolutions.myemployeemanager.R;
+import za.co.tangentsolutions.myemployeemanager.activities.LoginActivity;
+import za.co.tangentsolutions.myemployeemanager.contracts.LoginPresenterContract;
+import za.co.tangentsolutions.myemployeemanager.models.LoginModel;
+import za.co.tangentsolutions.myemployeemanager.models.UserModel;
+import za.co.tangentsolutions.myemployeemanager.providers.HttpConnectionProvider;
+import za.co.tangentsolutions.myemployeemanager.providers.RestServiceProvider;
+import za.co.tangentsolutions.myemployeemanager.views.LoginView;
 
 public class LoginPresenter extends BaseAsyncPresenter implements LoginPresenterContract {
 

@@ -1,8 +1,8 @@
 package za.co.tangentsolutions.myemployeemanager.providers;
 
 import android.os.Bundle;
-import za.co.geartronix.proto_app.Constants.Constants;
-import za.co.geartronix.proto_app.Models.EmployeeModel;
+import za.co.tangentsolutions.myemployeemanager.constants.Constants;
+import za.co.tangentsolutions.myemployeemanager.models.EmployeeModel;
 
 public class EmployeeProfileProvider {
 

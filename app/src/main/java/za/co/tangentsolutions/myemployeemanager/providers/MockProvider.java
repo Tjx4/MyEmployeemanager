@@ -2,9 +2,9 @@ package za.co.tangentsolutions.myemployeemanager.providers;
 
 import java.util.ArrayList;
 import java.util.List;
-import za.co.geartronix.proto_app.Models.EmployeeModel;
-import za.co.geartronix.proto_app.Models.PositionModel;
-import za.co.geartronix.proto_app.Models.UserModel;
+import za.co.tangentsolutions.myemployeemanager.models.EmployeeModel;
+import za.co.tangentsolutions.myemployeemanager.models.PositionModel;
+import za.co.tangentsolutions.myemployeemanager.models.UserModel;
 
 public class MockProvider {
 

@@ -1,6 +1,7 @@
 package za.co.tangentsolutions.myemployeemanager.providers;
 
-import za.co.geartronix.proto_app.R;
+
+import za.co.tangentsolutions.myemployeemanager.R;
 
 public enum EmployeeFilterProvider {
     race("race", R.drawable.race_icon),

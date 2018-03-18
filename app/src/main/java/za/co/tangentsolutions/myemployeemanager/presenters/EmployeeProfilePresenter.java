@@ -1,28 +1,26 @@
 package za.co.tangentsolutions.myemployeemanager.presenters;
 
 import android.os.Bundle;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import za.co.tangentsolutions.myemployeemanager.R;
+import za.co.tangentsolutions.myemployeemanager.activities.EmployeeProfileActivity;
+import za.co.tangentsolutions.myemployeemanager.constants.Constants;
+import za.co.tangentsolutions.myemployeemanager.contracts.EmployeeProfilePresenterContract;
+import za.co.tangentsolutions.myemployeemanager.models.EmployeeDetailsModel;
+import za.co.tangentsolutions.myemployeemanager.models.EmployeeModel;
+import za.co.tangentsolutions.myemployeemanager.models.FullEmployeeProfileModel;
+import za.co.tangentsolutions.myemployeemanager.models.PositionModel;
+import za.co.tangentsolutions.myemployeemanager.models.UserModel;
+import za.co.tangentsolutions.myemployeemanager.providers.HttpConnectionProvider;
+import za.co.tangentsolutions.myemployeemanager.providers.RestServiceProvider;
+import za.co.tangentsolutions.myemployeemanager.views.EmployeeProfileView;
 
-import za.co.geartronix.proto_app.Activities.EmployeeProfileActivity;
-import za.co.geartronix.proto_app.Constants.Constants;
-import za.co.geartronix.proto_app.Models.EmployeeDetailsModel;
-import za.co.geartronix.proto_app.Models.EmployeeModel;
-import za.co.geartronix.proto_app.Models.FullEmployeeProfileModel;
-import za.co.geartronix.proto_app.Models.PositionModel;
-import za.co.geartronix.proto_app.Models.UserModel;
-import za.co.geartronix.proto_app.Providers.HttpConnectionProvider;
-import za.co.geartronix.proto_app.Providers.RestServiceProvider;
-import za.co.geartronix.proto_app.R;
-import za.co.geartronix.proto_app.Views.EmployeeProfileView;
-import za.co.geartronix.proto_app.contracts.EmployeeProfilePresenterContract;
 
-public class EmployeeProfilePresenter extends BaseChildPresenter implements EmployeeProfilePresenterContract{
+public class EmployeeProfilePresenter extends BaseChildPresenter implements EmployeeProfilePresenterContract {
     private EmployeeProfileView employeeProfileView;
     private List<EmployeeDetailsModel> employeeDetailsList;
     private EmployeeModel currentEmplyee;

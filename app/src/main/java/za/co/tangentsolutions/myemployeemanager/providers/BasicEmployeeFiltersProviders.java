@@ -2,8 +2,8 @@ package za.co.tangentsolutions.myemployeemanager.providers;
 
 import java.util.ArrayList;
 import java.util.List;
-import za.co.geartronix.proto_app.Models.EmployeeFilterModel;
-import za.co.geartronix.proto_app.R;
+import za.co.tangentsolutions.myemployeemanager.R;
+import za.co.tangentsolutions.myemployeemanager.models.EmployeeFilterModel;
 
 public class BasicEmployeeFiltersProviders {
 
