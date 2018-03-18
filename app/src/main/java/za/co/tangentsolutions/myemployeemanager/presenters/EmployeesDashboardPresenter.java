@@ -1,13 +1,11 @@
 package za.co.tangentsolutions.myemployeemanager.presenters;
 
 import android.os.Bundle;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
 import za.co.tangentsolutions.myemployeemanager.activities.EmployeesDashBoardActivity;
 import za.co.tangentsolutions.myemployeemanager.models.EmployeeFilterModel;
 import za.co.tangentsolutions.myemployeemanager.models.EmployeeListModel;
@@ -51,7 +49,7 @@ public class EmployeesDashboardPresenter extends BaseSlideMenuPresenter implemen
 
     @Override
     public void showEmployeesList(List<EmployeeModel> employeesList) {
-       employeesDashBoardView.porpulateEmployeesList(employeesList, cacheProvider.getCachedUser().getId());
+        employeesDashBoardView.porpulateEmployeesList(employeesList, cacheProvider.getCachedUser().getId());
         isListPorpulated = true;
     }
 
@@ -163,6 +161,7 @@ public class EmployeesDashboardPresenter extends BaseSlideMenuPresenter implemen
         super.doAsyncOperation(currentTusk, actionIndex);
 
         if(isCheckingUpdates) {
+            isCheckingUpdates = false;
             return checkEmployeeListUpdate();
         }
         else if(isCached() && actionIndex == 0){

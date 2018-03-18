@@ -4,7 +4,7 @@
     <string name="login_error_message">Please check your username and password</string>
     <string name="employees_fetch_error_message">There was an problem while fetching employees list</string>
     <string name="full_employees_fetch_error_message">Full employee profile fetch error</string>
-    <string name="app_name">Proto_app</string>
+    <string name="app_name">My Employee manager</string>
     <string name="nameTag">Employee:</string>
     <string name="usernameTag">Username:</string>
     <string name="emailTag">Email:</string>
