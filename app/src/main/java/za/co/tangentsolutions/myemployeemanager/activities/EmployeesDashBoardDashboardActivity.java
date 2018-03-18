@@ -13,6 +13,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import za.co.tangentsolutions.myemployeemanager.R;
+
 public class EmployeesDashBoardDashboardActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
