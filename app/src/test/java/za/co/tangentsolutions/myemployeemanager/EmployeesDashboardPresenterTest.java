@@ -1,8 +1,41 @@
 package za.co.tangentsolutions.myemployeemanager;
 
-/**
- * Created by Tshepo on 3/18/2018.
- */
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
+import za.co.tangentsolutions.myemployeemanager.activities.EmployeesDashBoardActivity;
+import za.co.tangentsolutions.myemployeemanager.presenters.EmployeesDashboardPresenter;
+import za.co.tangentsolutions.myemployeemanager.views.EmployeesDashBoardView;
 
+@RunWith(MockitoJUnitRunner.class)
 public class EmployeesDashboardPresenterTest {
+
+    private EmployeesDashboardPresenter employeesDashboardPresenter;
+    @Mock
+    private EmployeesDashBoardView employeesDashBoardView;
+
+    @Mock
+    private EmployeesDashBoardActivity employeesDashboardActivity;
+
+    @Before
+    public void beforeTest() throws Exception {
+        employeesDashboardPresenter = new EmployeesDashboardPresenter(employeesDashboardActivity);
+    }
+
+    @Test
+    public void testThatEmployeeListIsPorpulatedWithRightData(){
+        //verify(employeesDashBoardView).showEmptyUsernameError(R.string.invalid_username_error_message);
+    }
+
+    @Test
+    public void shouldToggleFilterList(){
+        //verify(employeesDashBoardView).showEmptyUsernameError(R.string.invalid_username_error_message);
+    }
+
+    @Test
+    public void shouldShowFilteredList(){
+        //verify(employeesDashBoardView).showEmptyUsernameError(R.string.invalid_username_error_message);
+    }
 }
