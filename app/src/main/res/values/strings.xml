@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">My Employee manager</string>
+    <string name="title_activity_employees_dash_board_dashboard">
+        EmployeesDashBoardDashboardActivity
+    </string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
 </resources>
