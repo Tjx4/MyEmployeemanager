@@ -6,10 +6,10 @@ import com.google.gson.Gson;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import za.co.geartronix.proto_app.Activities.BaseActivity;
-import za.co.geartronix.proto_app.Models.EmployeeListModel;
-import za.co.geartronix.proto_app.Models.EmployeeModel;
-import za.co.geartronix.proto_app.Models.UserModel;
+import za.co.tangentsolutions.myemployeemanager.activities.BaseActivity;
+import za.co.tangentsolutions.myemployeemanager.models.EmployeeListModel;
+import za.co.tangentsolutions.myemployeemanager.models.EmployeeModel;
+import za.co.tangentsolutions.myemployeemanager.models.UserModel;
 
 public class CacheProvider {
     private SharedPreferences sharedPreferences;
