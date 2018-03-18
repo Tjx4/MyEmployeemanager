@@ -1,12 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="za.co.tangentsolutions.myemployeemanager.activities.EmployeesDashBoardDashboardActivity"
-    tools:showIn="@layout/app_bar_employees_dash_board_dashboard">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="50dp"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                tools:context="za.co.tangentsolutions.myemployeemanager.activities.EmployeesDashBoardDashboardActivity"
+                tools:showIn="@layout/app_bar_employees_dash_board_dashboard">
 
-</android.support.constraint.ConstraintLayout>
+    <RelativeLayout
+        android:background="#0088cc"
+        android:onClick="toggleFilterSpinner"
+        android:id="@+id/titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:paddingTop="20dp"
+        android:paddingLeft="22dp"
+        android:paddingRight="8dp"
+        android:paddingBottom="5dp"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:id="@+id/txtFilterTitle"
+            style="@style/mediumLabel"
+            android:layout_width="match_parent"
+            android:text="@string/showing_all"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/imgDropArraw"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"/>
+
+        <ImageView
+            android:id="@+id/imgDropArraw"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/drop_down_icon"/>
+
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/lstEmployeeList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="#FFF"
+        android:dividerHeight="3dp"
+        android:layout_below="@+id/titleBar"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+
+    <ListView
+        android:id="@+id/lstFilters"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/titleBar"
+        android:background="@color/transBlack2"
+        android:divider="@color/colorTransParent"
+        android:dividerHeight="0dp"/>
+
+</RelativeLayout>
