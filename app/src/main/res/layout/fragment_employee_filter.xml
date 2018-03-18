@@ -77,6 +77,8 @@
     <EditText
         android:id="@+id/txtRace"
         style="@style/filterEditText"
+        android:inputType="text"
+        android:maxLength="1"
         android:hint="Enter race code"/>
 
     <EditText

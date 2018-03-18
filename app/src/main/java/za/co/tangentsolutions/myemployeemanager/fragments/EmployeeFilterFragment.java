@@ -70,13 +70,8 @@ public class EmployeeFilterFragment  extends DialogFragmentProvider {
         baseActivity = (BaseActivity) context;
     }
 
-
     @Override
     protected void onFragmentViewClickedEvent(View view) {
-        if(false){
-            super.onFragmentViewClickedEvent(view);
-        }
-
-        gender = view.getTag().toString();
+         gender = view.getTag().toString();
     }
 }
