@@ -1,4 +1,7 @@
 package za.co.tangentsolutions.myemployeemanager.views;
 
-public class BaseView {
+import za.co.tangentsolutions.myemployeemanager.presenters.BasePresenter;
+
+public interface BaseView {
+    void setPresenter(BasePresenter presenter);
 }
