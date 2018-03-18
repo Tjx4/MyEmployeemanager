@@ -35,4 +35,5 @@
     <string name="filter_employees">Filter employees</string>
     <string name="female">Female</string>
     <string name="male">Male</string>
+    <string name="enter_postion">Enter postion</string>
 </resources>

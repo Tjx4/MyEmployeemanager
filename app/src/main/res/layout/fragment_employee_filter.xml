@@ -10,13 +10,9 @@
 
     <TextView
         style="@style/mediumLabel"
-        android:layout_width="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_marginTop="0dp"
-        android:layout_weight="1"
-        android:padding="0dp"
         android:text="Enter emoloyee filter details"
-        android:textColor="#cccccc"/>
+        android:layout_marginBottom="40dp"
+        android:textColor="@color/textBlack"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -33,8 +29,8 @@
             android:layout_marginTop="0dp"
             android:layout_weight="1"
             android:padding="0dp"
-            android:text="*Gender"
-            android:textColor="#cccccc"/>
+            android:text="Gender"
+            android:textColor="@color/textBlack"/>
 
         <ImageView
             android:id="@+id/imgGender"
@@ -58,6 +54,7 @@
                 style="@style/genderRadioBtn"
                 android:onClick="onGenderSelected"
                 android:tag="F"
+                android:textColor="@color/textBlack"
                 android:text="@string/female"/>
 
             <RadioButton
@@ -66,6 +63,7 @@
                 android:layout_marginLeft="20dp"
                 android:onClick="onGenderSelected"
                 android:tag="M"
+                android:textColor="@color/textBlack"
                 android:text="@string/male"/>
 
         </RadioGroup>
@@ -74,31 +72,37 @@
     <EditText
         android:id="@+id/txtPosition"
         style="@style/filterEditText"
-        android:hint="Enter postion"/>
+        android:hint="@string/enter_postion"/>
+
+    <EditText
+        android:id="@+id/txtRace"
+        style="@style/filterEditText"
+        android:hint="Enter race code"/>
 
     <EditText
         android:id="@+id/txtStartDateRange"
         style="@style/filterEditText"
-        android:hint="Enter start date index"/>
+        android:hint="Start date range"/>
 
     <EditText
         android:id="@+id/txtUser"
         style="@style/filterEditText"
-        android:hint="Enter user id"/>
-
+        android:hint="User range"/>
 
     <EditText
         android:id="@+id/txtBirthDateRange"
         style="@style/filterEditText"
-        android:hint="Enter birth date range"/>
+        android:hint="Birth date range"/>
 
     <EditText
         android:id="@+id/txtEmailContains"
         style="@style/filterEditText"
+        android:inputType="text"
         android:hint="Where email contains"/>
 
     <Button
         android:id="@+id/btnFilter"
+        android:onClick="onFilterButtonClicked"
         style="@style/mediumButton"
         android:text="Filter Employees"/>
 

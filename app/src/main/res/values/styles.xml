@@ -32,6 +32,14 @@
     <style name="mediumLabel" parent="myEmployeesLabel">
         <item name="android:textSize">@dimen/medium_text</item>
     </style>
+    <style name="filterTagTextView" parent="mediumLabel">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textSize">@dimen/medium_text</item>
+        <item name="android:layout_gravity">start</item>
+        <item name="android:gravity">start</item>
+        <item name="android:textAlignment">viewStart</item>
+        <item name="android:textColor">@color/textBlack2</item>
+    </style>
 
     <style name="employeeDetailsTagTextView" parent="mediumLabel">
         <item name="android:layout_width">wrap_content</item>
@@ -88,7 +96,7 @@
     </style>
 
     <style name="filterEditText" parent="mediumEditText">
-        <item name="android:layout_width">80dp</item>
+        <item name="android:inputType">number</item>
         <item name="android:background">@drawable/myemployees_edittext_background</item>
         <item name="android:layout_marginBottom">10dp</item>
     </style>

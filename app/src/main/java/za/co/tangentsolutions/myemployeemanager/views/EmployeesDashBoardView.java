@@ -12,4 +12,5 @@ public interface EmployeesDashBoardView extends BaseAsyncView {
     EmployeesDashboardPresenter getPresenter();
     void toggleFilterSpinner(View view);
     void openEmployeeFilterDialog();
+    void onFilterButtonClicked(View view);
 }

@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import za.co.tangentsolutions.myemployeemanager.activities.EmployeesDashBoardActivity;
+import za.co.tangentsolutions.myemployeemanager.fragments.EmployeeFilterFragment;
 import za.co.tangentsolutions.myemployeemanager.models.EmployeeFilterModel;
 import za.co.tangentsolutions.myemployeemanager.models.EmployeeListModel;
 import za.co.tangentsolutions.myemployeemanager.models.EmployeeModel;
@@ -43,6 +44,12 @@ public class EmployeesDashboardPresenter extends BaseSlideMenuPresenter implemen
     }
 
     @Override
+    public void setCustomFilters(EmployeeFilterFragment filterFragment){
+        this.filters = new BasicEmployeeFiltersProviders().getCustomFilters(filterFragment);
+        initializeFilteredEmployeesList();
+    }
+
+    @Override
     public void initializeFilteredEmployeesList() {
         new DoAsyncCall(1).execute();
     }
@@ -61,6 +68,9 @@ public class EmployeesDashboardPresenter extends BaseSlideMenuPresenter implemen
         Bundle payload = new Bundle();
 
         for(EmployeeFilterModel currentFilter : filters){
+            if(currentFilter.getKey().isEmpty() || currentFilter.getValue().isEmpty())
+                continue;
+
             payload.putString(currentFilter.getKey(), currentFilter.getValue());
         }
 

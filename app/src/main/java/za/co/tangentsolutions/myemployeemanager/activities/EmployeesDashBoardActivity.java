@@ -9,15 +9,18 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 import java.util.List;
 import za.co.tangentsolutions.myemployeemanager.R;
 import za.co.tangentsolutions.myemployeemanager.adapters.EmployeesAdapter;
 import za.co.tangentsolutions.myemployeemanager.adapters.EmployeesFilterAdapter;
 import za.co.tangentsolutions.myemployeemanager.fragments.EmployeeFilterFragment;
-import za.co.tangentsolutions.myemployeemanager.fragments.LoadingSpinnerFragment;
 import za.co.tangentsolutions.myemployeemanager.models.EmployeeFilterModel;
 import za.co.tangentsolutions.myemployeemanager.models.EmployeeModel;
 import za.co.tangentsolutions.myemployeemanager.presenters.EmployeesDashboardPresenter;
+import za.co.tangentsolutions.myemployeemanager.providers.BasicEmployeeFiltersProviders;
+import za.co.tangentsolutions.myemployeemanager.providers.EmployeeFilterProvider;
 import za.co.tangentsolutions.myemployeemanager.providers.EmployeeProfileProvider;
 import za.co.tangentsolutions.myemployeemanager.views.EmployeesDashBoardView;
 
@@ -25,6 +28,7 @@ public class EmployeesDashBoardActivity extends BaseSlideMenuActivity implements
     private ListView employeesListView, filtersSpnr;
     private ImageView dropArraw;
     private TextView filterTitleTxt;
+    private EmployeeFilterFragment filterFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,9 +76,16 @@ public class EmployeesDashBoardActivity extends BaseSlideMenuActivity implements
         }
     }
 
+
+    @Override
+    public void onFilterButtonClicked(View view) {
+        getPresenter().setCustomFilters(filterFragment);
+    }
+
     @Override
     public void openEmployeeFilterDialog() {
-        showFragmentDialog(getString(R.string.filter_employees), R.layout.fragment_employee_filter, new EmployeeFilterFragment());
+        filterFragment = new EmployeeFilterFragment();
+        showFragmentDialog(getString(R.string.filter_employees), R.layout.fragment_employee_filter, filterFragment);
     }
 
     @Override
