@@ -9,8 +9,8 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import za.co.geartronix.proto_app.Constants.Constants;
-import za.co.geartronix.proto_app.R;
+import za.co.tangentsolutions.myemployeemanager.constants.Constants;
+import za.co.tangentsolutions.myemployeemanager.R;
 
 public class DialogFragmentProvider extends DialogFragment {
     protected View clickedView;
@@ -53,5 +53,4 @@ public class DialogFragmentProvider extends DialogFragment {
     protected void onFragmentViewClickedEvent(View view) {
        // getDialog().dismiss();
     }
-
 }

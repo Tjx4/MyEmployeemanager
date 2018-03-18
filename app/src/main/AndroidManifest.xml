@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="za.co.tangentsolutions.myemployeemanager">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,7 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.SplashActivity">
+
+
+        <activity
+            android:name=".activities.SplashActivity"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -17,22 +24,28 @@
             </intent-filter>
         </activity>
         <activity
+            android:name="activities.LoginActivity"
+            android:theme="@style/loginTheme"
+            android:windowSoftInputMode="adjustPan">
+        </activity>
+        <activity
             android:name=".activities.EmployeesDashBoardDashboardActivity"
-            android:label="@string/title_activity_employees_dash_board_dashboard"
+            android:label="@string/title_activity_true_employees"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
-        <activity android:name=".activities.BaseAsyncActivity">
+        <activity
+            android:name=".activities.EmployeeProfileActivity"
+            android:parentActivityName=".activities.EmployeesDashBoardDashboardActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.EmployeesDashBoardDashboardActivity"/>
         </activity>
-        <activity android:name=".activities.BaseChildActivity">
+        <activity android:name=".activities.EmloyeeStatsActivity"
+                  android:parentActivityName=".activities.EmployeesDashBoardDashboardActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.EmployeesDashBoardDashboardActivity"/>
         </activity>
-        <activity android:name=".activities.BaseSlideMenuActivity">
-        </activity>
-        <activity android:name=".activities.EmloyeeStatsActivity">
-        </activity>
-        <activity android:name=".activities.EmployeeProfileActivity">
-        </activity>
-        <activity android:name=".activities.LoginActivity">
-        </activity>
-    </application>
 
+    </application>
 </manifest>

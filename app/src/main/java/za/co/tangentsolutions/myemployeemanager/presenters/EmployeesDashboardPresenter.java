@@ -4,21 +4,20 @@ import android.os.Bundle;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import za.co.geartronix.proto_app.Activities.EmployeesDashBoardDashboardActivity;
-import za.co.geartronix.proto_app.Models.EmployeeFilterModel;
-import za.co.geartronix.proto_app.Models.EmployeeListModel;
-import za.co.geartronix.proto_app.Models.EmployeeModel;
-import za.co.geartronix.proto_app.Providers.BasicEmployeeFiltersProviders;
-import za.co.geartronix.proto_app.Providers.HttpConnectionProvider;
-import za.co.geartronix.proto_app.Providers.RestServiceProvider;
-import za.co.geartronix.proto_app.R;
-import za.co.geartronix.proto_app.Views.EmployeesDashBoardView;
-import za.co.geartronix.proto_app.contracts.EmployeesPresenterContract;
+import za.co.tangentsolutions.myemployeemanager.activities.EmployeesDashBoardDashboardActivity;
+import za.co.tangentsolutions.myemployeemanager.models.EmployeeFilterModel;
+import za.co.tangentsolutions.myemployeemanager.models.EmployeeListModel;
+import za.co.tangentsolutions.myemployeemanager.models.EmployeeModel;
+import za.co.tangentsolutions.myemployeemanager.providers.BasicEmployeeFiltersProviders;
+import za.co.tangentsolutions.myemployeemanager.providers.HttpConnectionProvider;
+import za.co.tangentsolutions.myemployeemanager.providers.RestServiceProvider;
+import za.co.tangentsolutions.myemployeemanager.R;
+import za.co.tangentsolutions.myemployeemanager.views.EmployeesDashBoardView;
+import za.co.tangentsolutions.myemployeemanager.contracts.EmployeesPresenterContract;
 
 public class EmployeesDashboardPresenter extends BaseSlideMenuPresenter implements EmployeesPresenterContract {
 

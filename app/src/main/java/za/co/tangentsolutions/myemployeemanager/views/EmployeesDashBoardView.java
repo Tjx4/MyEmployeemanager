@@ -1,12 +1,10 @@
 package za.co.tangentsolutions.myemployeemanager.views;
 
 import android.view.View;
-
 import java.util.List;
-
-import za.co.geartronix.proto_app.Models.EmployeeFilterModel;
-import za.co.geartronix.proto_app.Models.EmployeeModel;
-import za.co.geartronix.proto_app.Presenters.EmployeesDashboardPresenter;
+import za.co.tangentsolutions.myemployeemanager.models.EmployeeFilterModel;
+import za.co.tangentsolutions.myemployeemanager.models.EmployeeModel;
+import za.co.tangentsolutions.myemployeemanager.presenters.EmployeesDashboardPresenter;
 
 public interface EmployeesDashBoardView extends BaseAsyncView {
     void porpulateEmployeesList(List<EmployeeModel> employeesList, int currentUserId);

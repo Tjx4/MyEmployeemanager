@@ -9,14 +9,13 @@
     android:fitsSystemWindows="true"
     tools:openDrawer="start">
 
-
     <include android:id="@+id/includeLayout"
-             layout="@layout/app_bar_true_employees"
+             layout="@layout/app_bar_employees_dash_board_dashboard"
              android:layout_width="match_parent"
              android:layout_height="match_parent"/>
 
     <ViewStub android:id="@+id/pageLayout"
-              layout="@layout/content_employees"
+              layout="@layout/content_employees_dash_board_dashboard"
               android:layout_width="match_parent"
               android:layout_height="match_parent"/>
 
