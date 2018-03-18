@@ -3,6 +3,7 @@ package za.co.tangentsolutions.myemployeemanager.providers;
 import java.util.ArrayList;
 import java.util.List;
 import za.co.tangentsolutions.myemployeemanager.R;
+import za.co.tangentsolutions.myemployeemanager.fragments.EmployeeFilterFragment;
 import za.co.tangentsolutions.myemployeemanager.models.EmployeeFilterModel;
 
 public class BasicEmployeeFiltersProviders {
@@ -44,5 +45,47 @@ public class BasicEmployeeFiltersProviders {
         basicFilters.add(avancedFilter);
 
         return basicFilters;
+    }
+
+    public List<EmployeeFilterModel> getCustomFilters(EmployeeFilterFragment filterFragment) {
+        List<EmployeeFilterModel> customFilters = new ArrayList<>();
+
+        EmployeeFilterModel genderFilter = new EmployeeFilterModel();
+        genderFilter.setValue(filterFragment.getGenderFilter());
+        genderFilter.setKey(EmployeeFilterProvider.gender.getFilterKey());
+
+        EmployeeFilterModel raceFilter = new EmployeeFilterModel();
+        raceFilter.setValue(filterFragment.getRaceFilter());
+        raceFilter.setKey(EmployeeFilterProvider.race.getFilterKey());
+
+        EmployeeFilterModel positionFilter = new EmployeeFilterModel();
+        positionFilter.setValue(filterFragment.getPositionFilter());
+        positionFilter.setKey(EmployeeFilterProvider.position.getFilterKey());
+
+        EmployeeFilterModel startDateFilter = new EmployeeFilterModel();
+        startDateFilter.setValue(filterFragment.getStartDateRangeFilter());
+        startDateFilter.setKey(EmployeeFilterProvider.startDate.getFilterKey());
+
+        EmployeeFilterModel userFilter = new EmployeeFilterModel();
+        userFilter.setValue(filterFragment.getUserFilter());
+        userFilter.setKey(EmployeeFilterProvider.user.getFilterKey());
+
+        EmployeeFilterModel birthDateRangeFilter = new EmployeeFilterModel();
+        birthDateRangeFilter.setValue(filterFragment.getBirthDateRangeFilter());
+        birthDateRangeFilter.setKey(EmployeeFilterProvider.birthDateRange.getFilterKey());
+
+        EmployeeFilterModel emailContainsFilter = new EmployeeFilterModel();
+        emailContainsFilter.setValue(filterFragment.emailContainsFilter());
+        emailContainsFilter.setKey(EmployeeFilterProvider.emailContains.getFilterKey());
+
+        customFilters.add(genderFilter);
+        customFilters.add(raceFilter);
+        customFilters.add(positionFilter);
+        customFilters.add(startDateFilter);
+        customFilters.add(userFilter);
+        customFilters.add(birthDateRangeFilter);
+        customFilters.add(emailContainsFilter);
+
+        return customFilters;
     }
 }
