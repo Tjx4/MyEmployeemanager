@@ -19,40 +19,40 @@ public class BasicEmployeeFiltersProviders {
         EmployeeFilterModel femaleOnlyFilter = new EmployeeFilterModel();
         femaleOnlyFilter.setDisplayText("Show only women");
         femaleOnlyFilter.setValue("F");
-        femaleOnlyFilter.setDisplayText(activity.getString(R.string.women_only_custom_filter_display));
+        femaleOnlyFilter.setTitleText(activity.getString(R.string.women_only_custom_filter_display));
         femaleOnlyFilter.setIcon(R.drawable.female_icon);
         femaleOnlyFilter.setKey(EmployeeFilterProvider.gender.getFilterKey());
 
         EmployeeFilterModel maleOnlyFilter = new EmployeeFilterModel();
         maleOnlyFilter.setDisplayText("Show only men");
         maleOnlyFilter.setValue("M");
-        maleOnlyFilter.setDisplayText(activity.getString(R.string.men_only_custom_filter_display));
+        maleOnlyFilter.setTitleText(activity.getString(R.string.men_only_custom_filter_display));
         maleOnlyFilter.setIcon(R.drawable.male_icon);
         maleOnlyFilter.setKey(EmployeeFilterProvider.gender.getFilterKey());
 
         EmployeeFilterModel birthdayMonthFilter = new EmployeeFilterModel();
         birthdayMonthFilter.setDisplayText("Show birth days this month");
         birthdayMonthFilter.setValue("1");
-        maleOnlyFilter.setDisplayText(activity.getString(R.string.birth_days_custom_filter_display));
+        birthdayMonthFilter.setTitleText(activity.getString(R.string.birth_days_custom_filter_display));
         birthdayMonthFilter.setIcon(EmployeeFilterProvider.birthDateRange.getIcon());
         birthdayMonthFilter.setKey(EmployeeFilterProvider.birthDateRange.getFilterKey());
 
         EmployeeFilterModel startedThisMonthFilter = new EmployeeFilterModel();
         startedThisMonthFilter.setDisplayText("Show people who started this month");
         startedThisMonthFilter.setValue("1");
-        maleOnlyFilter.setDisplayText(activity.getString(R.string.this_month_custom_filter_display));
+        startedThisMonthFilter.setTitleText(activity.getString(R.string.this_month_custom_filter_display));
         startedThisMonthFilter.setIcon(EmployeeFilterProvider.startDate.getIcon());
         startedThisMonthFilter.setKey(EmployeeFilterProvider.startDate.getFilterKey());
 
         EmployeeFilterModel avancedFilter = new EmployeeFilterModel();
         avancedFilter.setDisplayText("Custom filter");
-        avancedFilter.setDisplayText(activity.getString(R.string.custom_filter_display));
+        avancedFilter.setTitleText(activity.getString(R.string.custom_filter_display));
         avancedFilter.setIcon(R.drawable.advanced_icon);
 
         EmployeeFilterModel noFilter = new EmployeeFilterModel();
-        avancedFilter.setDisplayText("Show all");
-        avancedFilter.setDisplayText(activity.getString(R.string.showing_all));
-        avancedFilter.setIcon(R.drawable.all_icon);
+        noFilter.setDisplayText("Show all");
+        noFilter.setTitleText(activity.getString(R.string.showing_all));
+        noFilter.setIcon(R.drawable.all_icon);
 
         List<EmployeeFilterModel> basicFilters = new ArrayList<>();
         basicFilters.add(femaleOnlyFilter);

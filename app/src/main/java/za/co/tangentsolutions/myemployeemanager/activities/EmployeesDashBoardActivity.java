@@ -57,6 +57,9 @@ public class EmployeesDashBoardActivity extends BaseSlideMenuActivity implements
                 if(position == basicFilters.size() - 1){
                     openEmployeeFilterDialog();
                 }
+                else if(position == basicFilters.size() - 2){
+                    getPresenter().showAllEmployees();
+                }
                 else{
                     getPresenter().handleOnFilterSpinnerClicked(basicFilters.get(position));
                 }

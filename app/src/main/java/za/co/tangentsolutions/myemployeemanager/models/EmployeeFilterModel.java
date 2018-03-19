@@ -2,6 +2,7 @@ package za.co.tangentsolutions.myemployeemanager.models;
 
 public class EmployeeFilterModel {
     private String displayText;
+    private String titleText;
     private String key;
     private String value;
     private int icon;
@@ -12,6 +13,14 @@ public class EmployeeFilterModel {
 
     public void setDisplayText(String displayText) {
         this.displayText = displayText;
+    }
+
+    public String getTitleText() {
+        return titleText;
+    }
+
+    public void setTitleText(String titleText) {
+        this.titleText = titleText;
     }
 
     public String getKey() {
