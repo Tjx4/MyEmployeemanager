@@ -9,7 +9,7 @@ import za.co.tangentsolutions.myemployeemanager.presenters.EmployeesDashboardPre
 
 public interface EmployeesDashBoardView extends BaseAsyncView {
     void porpulateEmployeesList(List<EmployeeModel> employeesList, int currentUserId);
-    void porpulateBasicFilterSpinner(List<EmployeeFilterModel> basicFilters);
+    void porpulateBasicFilterListView(List<EmployeeFilterModel> basicFilters);
     EmployeesDashboardPresenter getPresenter();
     void toggleFilterSpinner(View view);
     void openEmployeeFilterDialog();
