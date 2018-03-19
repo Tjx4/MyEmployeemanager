@@ -45,7 +45,7 @@ public class EmployeesDashboardPresenter extends BaseSlideMenuPresenter implemen
 
     @Override
     public void setCustomFilters(EmployeeFilterFragment filterFragment){
-        List<EmployeeFilterModel> filters = new BasicEmployeeFiltersProviders().getCustomFilters(filterFragment);
+        List<EmployeeFilterModel> filters = new BasicEmployeeFiltersProviders(activity).getCustomFilters(filterFragment);
         
         if(filters.isEmpty()) {
             employeesDashBoardView.showEmptyFilterWarnigToast(R.string.no_filter_warning_string);
@@ -153,7 +153,7 @@ public class EmployeesDashboardPresenter extends BaseSlideMenuPresenter implemen
 
         if (actionIndex == 0) {
             try{
-                employeesDashBoardView.porpulateBasicFilterSpinner(new BasicEmployeeFiltersProviders().getBasicFilters());
+                employeesDashBoardView.porpulateBasicFilterSpinner(new BasicEmployeeFiltersProviders(activity).getBasicFilters());
 
                 employeeListModel = cacheProvider.getCachedEmployeeList();
                 if(isCached())

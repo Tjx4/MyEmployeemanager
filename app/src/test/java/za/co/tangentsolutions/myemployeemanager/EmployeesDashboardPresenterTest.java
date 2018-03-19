@@ -54,4 +54,28 @@ public class EmployeesDashboardPresenterTest {
 
         verify(employeesDashBoardView).showEmptyFilterWarnigToast(R.string.no_filter_warning_string);
     }
+
+    @Test
+    public void shouldShowSetFilterTitleToOnlyWomen(){
+        when(employeesDashBoardView.getFilterFragment().getGenderFilter()).thenReturn("F");
+        employeesDashBoardView.onFilterButtonClicked(null);
+
+        verify(employeesDashBoardView).setFilterTitle(R.string.women_only_custom_filter_display);
+    }
+
+    @Test
+    public void shouldShowSetFilterTitleToOnlyMen(){
+        when(employeesDashBoardView.getFilterFragment().getGenderFilter()).thenReturn("M");
+        employeesDashBoardView.onFilterButtonClicked(null);
+
+        verify(employeesDashBoardView).setFilterTitle(R.string.men_only_custom_filter_display);
+    }
+
+    @Test
+    public void shouldShowSetFilterTitleToOnlyThisMonth(){
+        when(employeesDashBoardView.getFilterFragment().getStartDateRangeFilter()).thenReturn("1");
+        employeesDashBoardView.onFilterButtonClicked(null);
+
+        verify(employeesDashBoardView).setFilterTitle(R.string.this_month_custom_filter_display);
+    }
 }

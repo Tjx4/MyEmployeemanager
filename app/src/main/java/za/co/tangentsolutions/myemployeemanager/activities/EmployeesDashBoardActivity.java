@@ -9,8 +9,6 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-
-import java.util.ArrayList;
 import java.util.List;
 import za.co.tangentsolutions.myemployeemanager.R;
 import za.co.tangentsolutions.myemployeemanager.adapters.EmployeesAdapter;
@@ -79,6 +77,10 @@ public class EmployeesDashBoardActivity extends BaseSlideMenuActivity implements
         }
     }
 
+    @Override
+    public void setFilterTitle(int titleRes) {
+        filterTitleTxt.setText(titleRes);
+    }
 
     @Override
     public void onFilterButtonClicked(View view) {
