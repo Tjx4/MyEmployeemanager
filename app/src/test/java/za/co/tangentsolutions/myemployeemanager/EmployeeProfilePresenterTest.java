@@ -1,7 +1,6 @@
 package za.co.tangentsolutions.myemployeemanager;
 
 import android.view.View;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,13 +27,21 @@ public class EmployeeProfilePresenterTest {
 
     @Test
     public void shouldShowFullProfileIfIsCurrentUser(){
+        employeeProfilePresenter.setMyprofile(true);
+        int actual = employeeProfileView.getUploadPicImg().getVisibility();
+        int actual2 = employeeProfileView.getTakePicImg().getVisibility();
 
-
+        assert(actual == View.VISIBLE);
+        assert(actual2 == View.VISIBLE);
     }
 
     @Test
     public void shouldShowLimitedProfileIfIsNotCurrentUser(){
+        employeeProfilePresenter.setMyprofile(false);
+        int actual = employeeProfileView.getUploadPicImg().getVisibility();
+        int actual2 = employeeProfileView.getTakePicImg().getVisibility();
 
-        isMyprofile
+        assert(actual == View.INVISIBLE);
+        assert(actual2 == View.INVISIBLE);
     }
 }

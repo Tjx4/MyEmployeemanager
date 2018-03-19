@@ -27,6 +27,16 @@ public class EmployeeProfileActivity extends BaseChildActivity implements Employ
     }
 
     @Override
+    public ImageView getUploadPicImg() {
+        return uploadPicImg;
+    }
+
+    @Override
+    public ImageView getTakePicImg() {
+        return takePicImg;
+    }
+
+    @Override
     public void showAdminTools() {
         uploadPicImg.setVisibility(View.VISIBLE);
         takePicImg.setVisibility(View.VISIBLE);

@@ -13,4 +13,6 @@ public interface EmployeeProfilePresenterContract extends BasePresenterContract 
     String makeFullEmployeeDetailsHttpCall() throws IOException;
     void setEmployeeDetails(EmployeeModel currentEmployee);
     EmployeeModel getEmployeeFromBundle(Bundle payloadBundle);
+    boolean isMyprofile();
+    void setMyprofile(boolean myprofile);
 }

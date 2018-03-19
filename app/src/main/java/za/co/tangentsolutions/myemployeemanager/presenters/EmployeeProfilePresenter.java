@@ -43,6 +43,14 @@ public class EmployeeProfilePresenter extends BaseChildPresenter implements Empl
         }
     }
 
+    public boolean isMyprofile() {
+        return isMyprofile;
+    }
+
+    public void setMyprofile(boolean myprofile) {
+        isMyprofile = myprofile;
+    }
+
     public EmployeeModel getEmployeeFromBundle(Bundle payloadBundle){
         UserModel userModel = new UserModel();
         userModel.setId(payloadBundle.getInt(Constants.ID_KEY));
