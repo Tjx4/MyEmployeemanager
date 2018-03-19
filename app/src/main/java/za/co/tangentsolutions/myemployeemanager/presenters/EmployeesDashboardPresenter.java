@@ -40,7 +40,7 @@ public class EmployeesDashboardPresenter extends BaseSlideMenuPresenter implemen
     @Override
     public void handleOnFilterSpinnerClicked(EmployeeFilterModel filter) {
         this.filters.add(filter);
-        employeesDashBoardView.setFilterTitle(filter.getDisplayText());
+        employeesDashBoardView.setFilterTitle(filter.getTitleText());
         initializeFilteredEmployeesList();
     }
 
@@ -236,5 +236,4 @@ public class EmployeesDashboardPresenter extends BaseSlideMenuPresenter implemen
         filters.clear();
         super.afterAsyncCall(actionIndex);
     }
-
 }
