@@ -35,7 +35,7 @@ public class EmployeeProfilePresenter extends BaseChildPresenter implements Empl
 
         if(isMyprofile) {
             employeeProfileView.showAdminTools();
-            new DoAsyncCall(0).execute();
+            showMyProfileInfo();
         }
         else {
             setEmployeeDetails(getEmployeeFromBundle(payloadBundle));
@@ -43,14 +43,22 @@ public class EmployeeProfilePresenter extends BaseChildPresenter implements Empl
         }
     }
 
+    @Override
+    public void showMyProfileInfo() {
+        new DoAsyncCall(0).execute();
+    }
+
+    @Override
     public boolean isMyprofile() {
         return isMyprofile;
     }
 
+    @Override
     public void setMyprofile(boolean myprofile) {
         isMyprofile = myprofile;
     }
 
+    @Override
     public EmployeeModel getEmployeeFromBundle(Bundle payloadBundle){
         UserModel userModel = new UserModel();
         userModel.setId(payloadBundle.getInt(Constants.ID_KEY));

@@ -14,5 +14,6 @@ public interface EmployeeProfilePresenterContract extends BasePresenterContract 
     void setEmployeeDetails(EmployeeModel currentEmployee);
     EmployeeModel getEmployeeFromBundle(Bundle payloadBundle);
     boolean isMyprofile();
+    void showMyProfileInfo();
     void setMyprofile(boolean myprofile);
 }
