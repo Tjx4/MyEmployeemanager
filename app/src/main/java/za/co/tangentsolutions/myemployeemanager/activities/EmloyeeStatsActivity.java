@@ -9,6 +9,6 @@ public class EmloyeeStatsActivity extends BaseChildActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_emloyee_stats);
-        currentActionBar.setTitle("Employee stats");
+        currentActionBar.setTitle(R.string.employee_stats);
     }
 }

@@ -44,4 +44,5 @@
     <string name="this_month_custom_filter_display">Showing :: Started this month  </string>
     <string name="race">Race</string>
     <string name="user">User</string>
+    <string name="employee_stats">Employee stats</string>
 </resources>
