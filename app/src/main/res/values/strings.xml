@@ -47,4 +47,5 @@
     <string name="race">Race</string>
     <string name="user">User</string>
     <string name="employee_stats">Employee stats</string>
+    <string name="loading_stats">Loading stats</string>
 </resources>
