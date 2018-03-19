@@ -18,8 +18,6 @@ public class LoginActivity extends BaseAsyncActivity implements LoginView {
 
         usernameTxt = findViewById(R.id.txtUsername);
         passwordTxt = findViewById(R.id.txtPassword);
-        usernameTxt.setText("pravin.gordhan");
-        passwordTxt.setText("pravin.gordhan");
 
         setPresenter(new LoginPresenter(this));
     }
