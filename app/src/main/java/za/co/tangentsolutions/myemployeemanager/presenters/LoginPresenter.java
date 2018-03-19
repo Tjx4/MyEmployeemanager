@@ -45,7 +45,7 @@ public class LoginPresenter extends BaseAsyncPresenter implements LoginPresenter
 
      @Override
     public void LoginUser(){
-        loginView.showLoadingDialog("Loging in");
+        loginView.showLoadingDialog(activity.getString(R.string.logging_in));
 
         LoginObject loginObject = new LoginObject(username, password);
         UserClient userClien = getUserClient();
@@ -60,7 +60,7 @@ public class LoginPresenter extends BaseAsyncPresenter implements LoginPresenter
                     makeUserDetailsCall();
                 }
                 else{
-                    loginView.showHttpCallError(activity.getString((R.string.login_error_message)));
+                    loginView.showHttpCallError(activity.getString(R.string.login_error_message));
                     loginView.hideLoadingDialog();
                 }
             }
