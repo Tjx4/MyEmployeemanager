@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.widget.ListView;
 import java.util.List;
 import za.co.tangentsolutions.myemployeemanager.R;
-import za.co.tangentsolutions.myemployeemanager.adapters.EmployeeDetailsAdapter;
 import za.co.tangentsolutions.myemployeemanager.adapters.EmployeeStatsAdapter;
 import za.co.tangentsolutions.myemployeemanager.models.EmployeeStatModel;
 import za.co.tangentsolutions.myemployeemanager.presenters.EmployeeStatsPrestenter;
