@@ -30,7 +30,7 @@ public class EmployeeStatsPrestenterTest {
 
     @Before
     public void beforeTest() throws Exception {
-        employeeStatsPrestenter = new EmployeeStatsPrestenter(emloyeeStatsActivity);
+        employeeStatsPrestenter = new EmployeeStatsPrestenter();
         testEmployeeStatList = new ArrayList<>();
         testEmployeeStatList.add(new EmployeeStatModel("Test Stat", "Test value1"));
         testEmployeeStatList.add(new EmployeeStatModel("Test Stat2", "Test value2"));

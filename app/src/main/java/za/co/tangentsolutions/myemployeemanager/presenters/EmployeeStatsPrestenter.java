@@ -23,6 +23,10 @@ public class EmployeeStatsPrestenter extends BaseChildPresenter implements Emplo
     private EmployeeStatsListModel employeeStatsListModel;
     private int statsCount;
 
+    public EmployeeStatsPrestenter() {
+        super();
+    }
+
     public EmployeeStatsPrestenter(BaseActivity activity) {
         super(activity);
         employeeStatsView = (EmployeeStatsView)activity;

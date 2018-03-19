@@ -52,14 +52,8 @@ public class LoginPresenterTest {
         String expectedUsername = loginView.getUsername();
         String expectedPassword = loginView.getPassword();
 
-        verify(loginPresenter).makeAuthtokeHttpCall(expectedUsername, expectedPassword);
-    }
-
-    @Test
-    public void shouldMakeBackendCall() throws Exception {
-        verify(loginPresenter).makeAuthtokeHttpCall(loginView.getUsername(), loginView.getPassword());
-
-        //
+        assert (loginPresenter.getUsername() == expectedUsername);
+        assert(loginPresenter.getUsername() == expectedPassword);
     }
 
     @Test
@@ -71,8 +65,4 @@ public class LoginPresenterTest {
         verify(loginView).showHttpCallError("");
     }
 
-    @Test
-    public void shouldGoToEmployeeDashboardIfLoginSuccessful() throws Exception {
-        verify(loginView).startEmployeesDashboardActivity();
-    }
 }

@@ -28,7 +28,7 @@ public class EmployeesDashboardPresenterTest {
 
     @Before
     public void beforeTest() throws Exception {
-        employeesDashboardPresenter = new EmployeesDashboardPresenter(employeesDashboardActivity);
+        employeesDashboardPresenter = new EmployeesDashboardPresenter();
     }
 
     @Test

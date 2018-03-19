@@ -16,6 +16,7 @@ import za.co.tangentsolutions.myemployeemanager.views.EmployeeProfileView;
 @RunWith(MockitoJUnitRunner.class)
 public class EmployeeProfilePresenterTest {
 
+    @Mock
     private EmployeeProfilePresenter employeeProfilePresenter;
     @Mock
     private EmployeeProfileView employeeProfileView;
@@ -27,8 +28,9 @@ public class EmployeeProfilePresenterTest {
 
     @Before
     public void beforeTest() throws Exception {
-        employeeProfilePresenter = new EmployeeProfilePresenter(employeeProfileActivity);
-        testEmployeeStatList =  new ArrayList<>();
+        employeeProfilePresenter = new EmployeeProfilePresenter();
+
+        testEmployeeStatList = new ArrayList<>();
         testEmployeeStatList.add(new EmployeeDetailsModel("Test tag1", "Test value1"));
         testEmployeeStatList.add(new EmployeeDetailsModel("Test tag1", "Test value2"));
     }

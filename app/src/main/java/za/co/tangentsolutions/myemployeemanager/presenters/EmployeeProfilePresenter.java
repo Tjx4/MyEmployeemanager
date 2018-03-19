@@ -25,6 +25,10 @@ public class EmployeeProfilePresenter extends BaseChildPresenter implements Empl
     private FullEmployeeProfileModel fullEmployeeProfileModel;
     private int detailsCount;
 
+    public EmployeeProfilePresenter(){
+        super();
+    }
+
     public EmployeeProfilePresenter(EmployeeProfileActivity employeeProfileActivity) {
         super(employeeProfileActivity);
         this.employeeProfileView = employeeProfileActivity;

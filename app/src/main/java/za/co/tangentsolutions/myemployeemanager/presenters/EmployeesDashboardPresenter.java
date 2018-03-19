@@ -27,6 +27,10 @@ public class EmployeesDashboardPresenter extends BaseSlideMenuPresenter implemen
     private boolean isPorpulatedEmployees, isPorpulatedFilters;
     private String employeeFilterString = "";
 
+    public EmployeesDashboardPresenter() {
+        super();
+    }
+
     public EmployeesDashboardPresenter(EmployeesDashBoardActivity employeesDashboardActivity) {
         super(employeesDashboardActivity);
         this.employeesDashBoardView = employeesDashboardActivity;

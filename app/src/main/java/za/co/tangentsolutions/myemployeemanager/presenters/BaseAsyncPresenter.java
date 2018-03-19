@@ -13,6 +13,10 @@ import za.co.tangentsolutions.myemployeemanager.providers.UserClient;
 
 public abstract class BaseAsyncPresenter extends BasePresenter{
 
+    public BaseAsyncPresenter(){
+        super();
+    }
+
     protected int httpConTimeout = 7000;
     protected String currentenvironment = Constants.CURRENTENVIRONMENT;
     private String token;
