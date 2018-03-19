@@ -5,10 +5,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import za.co.tangentsolutions.myemployeemanager.activities.EmloyeeStatsActivity;
 import za.co.tangentsolutions.myemployeemanager.models.EmployeeModel;
 import za.co.tangentsolutions.myemployeemanager.models.EmployeeStatModel;
@@ -47,28 +45,28 @@ public class EmployeeStatsPrestenterTest {
 
     @Test
     public void shouldShowNumberOfEmployees(){
-        employeeStatsPrestenter.getEmployeeCount(testEmployeeList);
-
+        //Size of emplyees list should mach the size we get from the method
         String actual = ""+testEmployeeList.size();
-
         assert (actual.equals(employeeStatsPrestenter.getEmployeeCount(testEmployeeList)));
     }
 
     @Test
     public void shouldShowBirthDaysThisMonth(){
-        //Mock male1 and female2 have birth days this month
+        //Mock male1 and female2 both have birth days this month
         String actual = "2";
         assert (actual.equals(employeeStatsPrestenter.getBirthDaysThisMonthCount(testEmployeeList, 10)));
     }
 
     @Test
     public void shouldShowFemaleEmployees(){
+        //Mock female1 and female2 make 2
         String actual = "2";
         assert (actual.equals(employeeStatsPrestenter.getFemaleCount(testEmployeeList)));
     }
 
     @Test
     public void shouldShowMaleEmployees(){
+        //Mock male1 is the only male employee
         String actual = "1";
         assert (actual.equals(employeeStatsPrestenter.getFemaleCount(testEmployeeList)));
     }
