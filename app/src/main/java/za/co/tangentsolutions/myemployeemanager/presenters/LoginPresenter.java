@@ -78,8 +78,6 @@ public class LoginPresenter extends BaseAsyncPresenter implements LoginPresenter
 
     @Override
     public String getUserDetails() throws IOException, JSONException {
-        // TODO: improve
-        loginModel.setSuccessful(false);
         userModel = new UserModel();
         String response = makeUserDetailsHttpCall();
         JSONArray rootJsonArray = new JSONArray(response);
@@ -122,12 +120,12 @@ public class LoginPresenter extends BaseAsyncPresenter implements LoginPresenter
                 case 0:
                     setToken(loginModel.getToken());
                     cacheProvider.cacheToken(loginModel.getToken());
+                    loginModel.setSuccessful(false);
                     new DoAsyncCall(1).execute();
                 break;
                 case 1:
                      cacheProvider.cacheUser(userModel);
                      loginView.startEmployeesActivity();
-                     //loginView.hideLoadingDialog();
                  break;
             }
 

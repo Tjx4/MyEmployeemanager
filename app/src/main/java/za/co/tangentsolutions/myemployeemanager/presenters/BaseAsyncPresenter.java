@@ -64,7 +64,6 @@ public abstract class BaseAsyncPresenter extends BasePresenter{
     }
 
     protected void afterAsyncCall(int actionIndex){
-        // TODO: fix
         if(clickedView != null)
             clickedView = null;
 
