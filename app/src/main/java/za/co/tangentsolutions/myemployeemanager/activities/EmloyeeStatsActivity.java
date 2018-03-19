@@ -18,15 +18,14 @@ public class EmloyeeStatsActivity extends BaseChildActivity implements EmployeeS
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_emloyee_stats);
         currentActionBar.setTitle(R.string.employee_stats);
-        employeeStatLstV = findViewById(R.id.lstVEmployeeStat);
+        employeeStatLstV = findViewById(R.id.lstVEmployeeStats);
         setPresenter(new EmployeeStatsPrestenter(this));
     }
 
     @Override
-    public void showEmployeeDetails(List<EmployeeStatModel> employeeDetailsList) {
+    public void showEmployeeStats(List<EmployeeStatModel> employeeDetailsList) {
         EmployeeStatsAdapter employeeStatAdapter = new EmployeeStatsAdapter(this, R.layout.employee_stat_view, employeeDetailsList);
 
-        employeeStatLstV = findViewById(R.id.lstvEmployeeInfo);
         employeeStatLstV.setAdapter(employeeStatAdapter);
     }
 }

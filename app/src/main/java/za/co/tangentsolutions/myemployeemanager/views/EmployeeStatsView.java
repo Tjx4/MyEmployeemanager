@@ -4,5 +4,5 @@ import java.util.List;
 import za.co.tangentsolutions.myemployeemanager.models.EmployeeStatModel;
 
 public interface EmployeeStatsView extends BaseAsyncView {
-    void showEmployeeDetails(List<EmployeeStatModel> employeeDetailsList);
+    void showEmployeeStats(List<EmployeeStatModel> employeeDetailsList);
 }
