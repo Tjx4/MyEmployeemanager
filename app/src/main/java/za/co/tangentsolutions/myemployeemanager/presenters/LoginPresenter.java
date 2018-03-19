@@ -19,6 +19,10 @@ public class LoginPresenter extends BaseAsyncPresenter implements LoginPresenter
     private String username;
     private String password;
 
+    public LoginPresenter() {
+        super();
+    }
+
     public LoginPresenter(LoginActivity loginActivity) {
         super(loginActivity);
         this.loginView = loginActivity;

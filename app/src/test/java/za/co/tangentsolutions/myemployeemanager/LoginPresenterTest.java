@@ -23,7 +23,7 @@ public class LoginPresenterTest {
 
     @Before
     public void beforeTest() throws Exception {
-        loginPresenter = new LoginPresenter(loginActivity);
+        loginPresenter = new LoginPresenter();
     }
 
     @Test
