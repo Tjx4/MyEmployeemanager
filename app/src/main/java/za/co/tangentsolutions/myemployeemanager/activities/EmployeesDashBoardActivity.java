@@ -55,6 +55,7 @@ public class EmployeesDashBoardActivity extends BaseSlideMenuActivity implements
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 if(position == basicFilters.size() - 1){
+                    setFilterTitle(getString(R.string.showing_all));
                     getPresenter().showAllEmployees();
                 }
                 else if(position == basicFilters.size() - 2){
