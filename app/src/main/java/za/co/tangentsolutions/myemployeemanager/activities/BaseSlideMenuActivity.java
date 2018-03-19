@@ -63,6 +63,12 @@ public abstract class BaseSlideMenuActivity extends BaseAsyncActivity implements
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         MenuItem item1 =  item;
+
+        switch (item.getItemId()){
+            case R.id.action_info:
+                showShortToast("Show instructions");
+                break;
+        }
         return true;
     }
 
