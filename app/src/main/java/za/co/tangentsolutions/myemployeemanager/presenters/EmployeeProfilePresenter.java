@@ -19,7 +19,6 @@ import za.co.tangentsolutions.myemployeemanager.providers.HttpConnectionProvider
 import za.co.tangentsolutions.myemployeemanager.providers.RestServiceProvider;
 import za.co.tangentsolutions.myemployeemanager.views.EmployeeProfileView;
 
-
 public class EmployeeProfilePresenter extends BaseChildPresenter implements EmployeeProfilePresenterContract {
     private EmployeeProfileView employeeProfileView;
     private List<EmployeeDetailsModel> employeeDetailsList;

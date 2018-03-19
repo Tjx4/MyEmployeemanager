@@ -1,5 +1,7 @@
 package za.co.tangentsolutions.myemployeemanager;
 
+import android.view.View;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,5 +29,12 @@ public class EmployeeProfilePresenterTest {
     @Test
     public void shouldShowFullProfileIfIsCurrentUser(){
 
+
+    }
+
+    @Test
+    public void shouldShowLimitedProfileIfIsNotCurrentUser(){
+
+        isMyprofile
     }
 }
