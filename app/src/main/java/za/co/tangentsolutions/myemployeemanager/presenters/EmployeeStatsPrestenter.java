@@ -11,7 +11,6 @@ import za.co.tangentsolutions.myemployeemanager.models.EmployeeListModel;
 import za.co.tangentsolutions.myemployeemanager.models.EmployeeModel;
 import za.co.tangentsolutions.myemployeemanager.models.EmployeeStatModel;
 import za.co.tangentsolutions.myemployeemanager.models.EmployeeStatsListModel;
-import za.co.tangentsolutions.myemployeemanager.providers.HttpConnectionProvider;
 import za.co.tangentsolutions.myemployeemanager.views.EmployeeStatsView;
 
 public class EmployeeStatsPrestenter extends BaseChildPresenter implements EmployeeStatsPrestenterContract {
@@ -64,8 +63,7 @@ public class EmployeeStatsPrestenter extends BaseChildPresenter implements Emplo
     public String makeFullEmployeeDetailsHttpCall() throws IOException {
         String service = ""; //RestServiceProvider.employee.getPath();
         String url = currentenvironment + service;
-
-        return new HttpConnectionProvider().makeOathCall(url, "GET", true, true, httpConTimeout, this);
+return null;
     }
 
     @Override
