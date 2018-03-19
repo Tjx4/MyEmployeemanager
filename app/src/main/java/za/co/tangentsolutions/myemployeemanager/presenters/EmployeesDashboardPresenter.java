@@ -180,7 +180,6 @@ public class EmployeesDashboardPresenter extends BaseSlideMenuPresenter implemen
                 }
                 else{
                     employeesDashBoardView.showHttpCallError(activity.getString((R.string.employees_fetch_error_message)));
-                    employeesDashBoardView.hideLoadingDialog();
                 }
 
                 employeesDashBoardView.hideLoadingDialog();

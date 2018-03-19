@@ -57,8 +57,7 @@ public class EmployeeStatsPrestenter extends BaseChildPresenter implements Emplo
                     statsCount = employeeStatsListModel.getEmployeeStatsList().getEmployee().size();
                 }
                 else{
-                    employeeStatsView.showHttpCallError(activity.getString((R.string.employees_fetch_error_message)));
-                    employeeStatsView.hideLoadingDialog();
+                    employeeStatsView.showHttpCallError(activity.getString((R.string.employees_stats_error_message)));
                 }
 
                 employeeStatsView.hideLoadingDialog();

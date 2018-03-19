@@ -2,16 +2,23 @@ package za.co.tangentsolutions.myemployeemanager.presenters;
 
 import android.os.Bundle;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import za.co.tangentsolutions.myemployeemanager.R;
 import za.co.tangentsolutions.myemployeemanager.activities.EmployeeProfileActivity;
 import za.co.tangentsolutions.myemployeemanager.constants.Constants;
 import za.co.tangentsolutions.myemployeemanager.contracts.EmployeeProfilePresenterContract;
 import za.co.tangentsolutions.myemployeemanager.models.EmployeeDetailsModel;
+import za.co.tangentsolutions.myemployeemanager.models.EmployeeListModel;
 import za.co.tangentsolutions.myemployeemanager.models.EmployeeModel;
 import za.co.tangentsolutions.myemployeemanager.models.FullEmployeeProfileModel;
 import za.co.tangentsolutions.myemployeemanager.models.PositionModel;
 import za.co.tangentsolutions.myemployeemanager.models.UserModel;
+import za.co.tangentsolutions.myemployeemanager.providers.UserClient;
 import za.co.tangentsolutions.myemployeemanager.views.EmployeeProfileView;
 
 public class EmployeeProfilePresenter extends BaseChildPresenter implements EmployeeProfilePresenterContract {
@@ -46,6 +53,40 @@ public class EmployeeProfilePresenter extends BaseChildPresenter implements Empl
     @Override
     public void showMyProfileInfo() {
         // make call
+    }
+
+    @Override
+    public void fetchRemoteEmployeesAndShowStats(){
+        employeeProfileView.showLoadingDialog(activity.getString(R.string.fetching_employees));
+
+        UserClient userClient = getUserClient();
+        Call<List<EmployeeModel>> call = userClient.getEmployeesList(getToken(), new HashMap<String, String>());
+
+        call.enqueue(new Callback<List<EmployeeModel>>() {
+            @Override
+            public void onResponse(Call<List<EmployeeModel>> call, Response<List<EmployeeModel>> response) {
+                if(response.isSuccessful()){
+                    List<EmployeeModel> remoteEmployeeList = response.body();
+                    EmployeeListModel employeeListModel = new EmployeeListModel();
+                    employeeListModel.setEmployee(remoteEmployeeList);
+
+                    employeeStatsListModel.setEmployeeStatsList(employeeListModel);
+                    setEmployeeStats(employeeStatsListModel.getEmployeeStatsList());
+                    employeeProfileView.porpulateStatsListView(getUserStats());
+                    statsCount = employeeStatsListModel.getEmployeeStatsList().getEmployee().size();
+                }
+                else{
+                    employeeProfileView.showHttpCallError(activity.getString((R.string.employees_stats_error_message)));
+                }
+
+                employeeProfileView.hideLoadingDialog();
+            }
+
+            @Override
+            public void onFailure(Call<List<EmployeeModel>> call, Throwable t) {
+                employeeStatsView.showHttpCallError(activity.getString((R.string.connection_error_message)));
+            }
+        });
     }
 
     @Override
@@ -115,15 +156,7 @@ public class EmployeeProfilePresenter extends BaseChildPresenter implements Empl
 
 
     /*
-    @Override
-    protected void duringAsyncCall(int actionIndex) {
-        if(actionIndex == 0 && isCached())
-            return;
 
-        employeeProfileView.showLoadingDialog(activity.getString(R.string.loading_your_profile));
-    }
-
-    @Override
     protected void afterAsyncCall(int actionIndex) {
         if(fullEmployeeProfileModel.isSuccessful()){
             switch (actionIndex){

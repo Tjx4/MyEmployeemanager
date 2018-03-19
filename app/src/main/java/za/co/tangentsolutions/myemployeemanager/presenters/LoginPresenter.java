@@ -60,8 +60,9 @@ public class LoginPresenter extends BaseAsyncPresenter implements LoginPresenter
                 }
                 else{
                     loginView.showHttpCallError(activity.getString(R.string.login_error_message));
-                    loginView.hideLoadingDialog();
                 }
+
+                loginView.hideLoadingDialog();
             }
 
             @Override
