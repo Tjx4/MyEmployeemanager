@@ -38,10 +38,10 @@
     <string name="enter_postion">Enter postion</string>
     <string name="no_filter_warning_string">You did not add any filters</string>
     <string name="custom_filter_display">Showing :: Custom filter</string>
-    <string name="women_only_custom_filter_display">Showing :: Started this month</string>
-    <string name="men_only_custom_filter_display">Showing :: Birth days this month</string>
-    <string name="birth_days_custom_filter_display">Showing :: Men only</string>
-    <string name="this_month_custom_filter_display">Showing :: Women only</string>
+    <string name="women_only_custom_filter_display">Showing :: Women only</string>
+    <string name="men_only_custom_filter_display">Showing :: Men only</string>
+    <string name="birth_days_custom_filter_display">Showing :: Birth days this month </string>
+    <string name="this_month_custom_filter_display">Showing :: Started this month  </string>
     <string name="race">Race</string>
     <string name="user">User</string>
 </resources>
