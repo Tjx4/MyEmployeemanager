@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -79,7 +78,6 @@ public class EmployeesDashboardPresenter extends BaseSlideMenuPresenter implemen
     @Override
     public void handleOnFilterSpinnerClicked(EmployeeFilterModel filter) {
         this.filters.add(filter);
-        employeesDashBoardView.setFilterTitle(filter.getTitleText());
         showFilteredEmployees();
     }
 
@@ -176,6 +174,7 @@ public class EmployeesDashboardPresenter extends BaseSlideMenuPresenter implemen
                     }
                     else{
                         showEmployeesList(employeeListModel.getEmployee());
+                        cacheProvider.cacheEmployeeList(employeeListModel);
                     }
                 }
                 else{

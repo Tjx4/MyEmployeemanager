@@ -45,7 +45,7 @@ public class EmployeesDashBoardActivity extends BaseSlideMenuActivity implements
     }
 
     @Override
-    public void porpulateBasicFilterSpinner(List<EmployeeFilterModel> filters) {
+    public void porpulateBasicFilterListView(List<EmployeeFilterModel> filters) {
         final List<EmployeeFilterModel>basicFilters = filters;
 
         EmployeesFilterAdapter employeesAdapter = new EmployeesFilterAdapter(this, R.layout.employee_filter_item, basicFilters);
@@ -64,6 +64,8 @@ public class EmployeesDashBoardActivity extends BaseSlideMenuActivity implements
                 else{
                     getPresenter().handleOnFilterSpinnerClicked(basicFilters.get(position));
                 }
+
+                setFilterTitle(basicFilters.get(position).getTitleText());
 
                 toggleFilterSpinner(view);
             }
