@@ -23,5 +23,6 @@ public class Constants {
     public static final String LOGIN = "api-token-auth/";
     public static final String CURRENT_USER = "api/user/me/";
     public static final String EMPLOYEES = "api/employee/";
-    public static final String EMPLOYEE = "employee/me/";
+    public static final String EMPLOYEE = "api/employee/me/";
+
 }

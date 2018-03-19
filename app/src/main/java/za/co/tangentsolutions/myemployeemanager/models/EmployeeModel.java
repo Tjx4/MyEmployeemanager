@@ -3,6 +3,8 @@ package za.co.tangentsolutions.myemployeemanager.models;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.List;
+
 public class EmployeeModel {
     private UserModel user;
     private PositionModel position;
@@ -16,9 +18,8 @@ public class EmployeeModel {
     private int age;
     private int days_to_birthday;
 
-    //only if admin or is my profile
-    private ReviewListModel employee_review;
-    private NextOFkinListModel employee_next_of_kin;
+    private List<ReviewModel>  employee_review;
+    private List<NextOfKinModel> employee_next_of_kin;
     private String leave_remaining;
     private String next_review;
     private String id_number;
@@ -63,13 +64,13 @@ public class EmployeeModel {
         if(employeeJson.has("employee_review")){
             ReviewListModel reviewListModelListModel = new ReviewListModel();
             reviewListModelListModel.setModel(employeeJson.getJSONArray("employee_review"));
-            setEmployee_review(reviewListModelListModel);
+            setEmployee_review(reviewListModelListModel.getEmployee_review());
         }
 
         if(employeeJson.has("employee_next_of_kin")) {
             NextOFkinListModel nextOFkinListModel = new NextOFkinListModel();
             nextOFkinListModel.setModel(employeeJson.getJSONArray("employee_next_of_kin"));
-            setEmployee_next_of_kin(nextOFkinListModel);
+            setEmployee_next_of_kin(nextOFkinListModel.getEmployee_next_of_kin());
         }
     }
 
@@ -114,19 +115,19 @@ public class EmployeeModel {
         this.next_review = next_review;
     }
 
-    public ReviewListModel getEmployee_review() {
+    public List<ReviewModel>  getEmployee_review() {
         return employee_review;
     }
 
-    public void setEmployee_review(ReviewListModel employee_review) {
+    public void setEmployee_review(List<ReviewModel>  employee_review) {
         this.employee_review = employee_review;
     }
 
-    public NextOFkinListModel getEmployee_next_of_kin() {
+    public List<NextOfKinModel> getEmployee_next_of_kin() {
         return employee_next_of_kin;
     }
 
-    public void setEmployee_next_of_kin(NextOFkinListModel employee_next_of_kin) {
+    public void setEmployee_next_of_kin(List<NextOfKinModel> employee_next_of_kin) {
         this.employee_next_of_kin = employee_next_of_kin;
     }
 

@@ -2,9 +2,7 @@ package za.co.tangentsolutions.myemployeemanager.presenters;
 
 import android.os.Bundle;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -13,7 +11,6 @@ import za.co.tangentsolutions.myemployeemanager.activities.EmployeeProfileActivi
 import za.co.tangentsolutions.myemployeemanager.constants.Constants;
 import za.co.tangentsolutions.myemployeemanager.contracts.EmployeeProfilePresenterContract;
 import za.co.tangentsolutions.myemployeemanager.models.EmployeeDetailsModel;
-import za.co.tangentsolutions.myemployeemanager.models.EmployeeListModel;
 import za.co.tangentsolutions.myemployeemanager.models.EmployeeModel;
 import za.co.tangentsolutions.myemployeemanager.models.FullEmployeeProfileModel;
 import za.co.tangentsolutions.myemployeemanager.models.PositionModel;
@@ -24,7 +21,6 @@ import za.co.tangentsolutions.myemployeemanager.views.EmployeeProfileView;
 public class EmployeeProfilePresenter extends BaseChildPresenter implements EmployeeProfilePresenterContract {
     private EmployeeProfileView employeeProfileView;
     private List<EmployeeDetailsModel> employeeDetailsList;
-    private EmployeeModel currentEmplyee;
     private boolean isMyprofile;
     private FullEmployeeProfileModel fullEmployeeProfileModel;
     private int detailsCount;
@@ -32,7 +28,8 @@ public class EmployeeProfilePresenter extends BaseChildPresenter implements Empl
     public EmployeeProfilePresenter(EmployeeProfileActivity employeeProfileActivity) {
         super(employeeProfileActivity);
         this.employeeProfileView = employeeProfileActivity;
-
+        employeeDetailsList = new ArrayList<>();
+        fullEmployeeProfileModel = new FullEmployeeProfileModel();
         Bundle payloadBundle = employeeProfileActivity.getPayloadBundle();
         isMyprofile = payloadBundle.getBoolean(Constants.ISMYPROFILE_KEY);
 
@@ -52,28 +49,27 @@ public class EmployeeProfilePresenter extends BaseChildPresenter implements Empl
 
     @Override
     public void showMyProfileInfo() {
-        // make call
+        fetchFullUserProfile();
     }
 
     @Override
-    public void fetchRemoteEmployeesAndShowStats(){
+    public void fetchFullUserProfile(){
         employeeProfileView.showLoadingDialog(activity.getString(R.string.fetching_employees));
 
         UserClient userClient = getUserClient();
-        Call<List<EmployeeModel>> call = userClient.getEmployeesList(getToken(), new HashMap<String, String>());
+        Call<EmployeeModel> call = userClient.getEmployee(getToken());
 
-        call.enqueue(new Callback<List<EmployeeModel>>() {
+        call.enqueue(new Callback<EmployeeModel>() {
             @Override
-            public void onResponse(Call<List<EmployeeModel>> call, Response<List<EmployeeModel>> response) {
+            public void onResponse(Call<EmployeeModel> call, Response<EmployeeModel> response) {
                 if(response.isSuccessful()){
-                    List<EmployeeModel> remoteEmployeeList = response.body();
-                    EmployeeListModel employeeListModel = new EmployeeListModel();
-                    employeeListModel.setEmployee(remoteEmployeeList);
+                    EmployeeModel fullEmployeeProfile = response.body();
+                    fullEmployeeProfileModel.setEmployee(fullEmployeeProfile);
 
-                    employeeStatsListModel.setEmployeeStatsList(employeeListModel);
-                    setEmployeeStats(employeeStatsListModel.getEmployeeStatsList());
-                    employeeProfileView.porpulateStatsListView(getUserStats());
-                    statsCount = employeeStatsListModel.getEmployeeStatsList().getEmployee().size();
+                    setEmployeeDetails(fullEmployeeProfileModel.getEmployee());
+                    employeeProfileView.porpulateDetailsListView(getUserDetails());
+                    detailsCount = getUserDetails().size();
+                    fullEmployeeProfileModel.setSuccessful(false);
                 }
                 else{
                     employeeProfileView.showHttpCallError(activity.getString((R.string.employees_stats_error_message)));
@@ -83,8 +79,8 @@ public class EmployeeProfilePresenter extends BaseChildPresenter implements Empl
             }
 
             @Override
-            public void onFailure(Call<List<EmployeeModel>> call, Throwable t) {
-                employeeStatsView.showHttpCallError(activity.getString((R.string.connection_error_message)));
+            public void onFailure(Call<EmployeeModel> call, Throwable t) {
+                employeeProfileView.showHttpCallError(activity.getString((R.string.connection_error_message)));
             }
         });
     }
@@ -137,10 +133,10 @@ public class EmployeeProfilePresenter extends BaseChildPresenter implements Empl
             employeeDetailsList.add(new EmployeeDetailsModel(activity.getString(R.string.next_review), currentEmployee.getNext_review()));
             employeeDetailsList.add(new EmployeeDetailsModel(activity.getString(R.string.physical_address), currentEmployee.getPhysical_address()));
 
-            for(int n = 0; n < currentEmployee.getEmployee_next_of_kin().getEmployee_next_of_kin().size(); ++n){
+            for(int n = 0; n < currentEmployee.getEmployee_next_of_kin().size(); ++n){
                 int nextOfKinIndex = n + 1;
 
-                employeeDetailsList.add(new EmployeeDetailsModel(activity.getString(R.string.next_of_kin)+" "+ nextOfKinIndex,  currentEmployee.getEmployee_next_of_kin().getEmployee_next_of_kin().get(n).getName()));
+                employeeDetailsList.add(new EmployeeDetailsModel(activity.getString(R.string.next_of_kin)+" "+ nextOfKinIndex,  currentEmployee.getEmployee_next_of_kin().get(n).getName()));
 
             }
 
@@ -154,26 +150,4 @@ public class EmployeeProfilePresenter extends BaseChildPresenter implements Empl
         return employeeDetailsList;
     }
 
-
-    /*
-
-    protected void afterAsyncCall(int actionIndex) {
-        if(fullEmployeeProfileModel.isSuccessful()){
-            switch (actionIndex){
-                case 0:
-                    setEmployeeDetails(fullEmployeeProfileModel.getEmployee());
-                    employeeProfileView.porpulateDetailsListView(getUserDetails());
-                    detailsCount = getUserDetails().size();
-                    fullEmployeeProfileModel.setSuccessful(false);
-                    break;
-            }
-        }
-        else {
-            employeeProfileView.showHttpCallError(activity.getString((R.string.full_employees_fetch_error_message)));
-            super.afterAsyncCall(actionIndex);
-        }
-
-        super.afterAsyncCall(actionIndex);
-    }
-    */
 }
