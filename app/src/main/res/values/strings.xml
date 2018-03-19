@@ -4,6 +4,7 @@
     <string name="login_error_message">Please check your username and password</string>
     <string name="employees_fetch_error_message">There was an problem while fetching employees list</string>
     <string name="full_employees_fetch_error_message">Full employee profile fetch error</string>
+    <string name="employees_stats_error_message">Full employee profile fetch error</string>
     <string name="app_name">My Employee manager</string>
     <string name="nameTag">Employee:</string>
     <string name="usernameTag">Username:</string>
@@ -37,6 +38,7 @@
     <string name="male">Male</string>
     <string name="enter_postion">Enter postion</string>
     <string name="no_filter_warning_string">You did not add any filters</string>
+    <string name="menu_tag_line">Please select an option to continue</string>
     <string name="custom_filter_display">Showing :: Custom filter</string>
     <string name="women_only_custom_filter_display">Showing :: Women only</string>
     <string name="men_only_custom_filter_display">Showing :: Men only</string>
