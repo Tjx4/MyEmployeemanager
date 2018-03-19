@@ -42,4 +42,6 @@
     <string name="men_only_custom_filter_display">Showing :: Birth days this month</string>
     <string name="birth_days_custom_filter_display">Showing :: Men only</string>
     <string name="this_month_custom_filter_display">Showing :: Women only</string>
+    <string name="race">Race</string>
+    <string name="user">User</string>
 </resources>

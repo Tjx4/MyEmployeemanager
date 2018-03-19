@@ -24,7 +24,7 @@
         style="@style/mediumLabel"
         android:id="@+id/txtFilterType"
         android:layout_width="match_parent"
-        android:text="Showing :: All"
+        android:text="@string/showing_all"
         android:textColor="@color/transBlack"
         android:paddingLeft="10dp"
         android:gravity="start"

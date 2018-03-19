@@ -78,7 +78,7 @@
         android:inputType="textPersonName"
         android:digits="BCIWN"
         android:maxLength="1"
-        android:hint="Enter race code"/>
+        android:hint="@string/race"/>
 
     <EditText
         android:id="@+id/txtStartDateRange"
@@ -88,7 +88,7 @@
     <EditText
         android:id="@+id/txtUser"
         style="@style/filterEditText"
-        android:hint="User range"/>
+        android:hint="@string/user"/>
 
     <EditText
         android:id="@+id/txtBirthDateRange"
@@ -105,6 +105,6 @@
         android:id="@+id/btnFilter"
         android:onClick="onFilterButtonClicked"
         style="@style/mediumButton"
-        android:text="Filter Employees"/>
+        android:text="@string/filter_employees"/>
 
 </LinearLayout>
