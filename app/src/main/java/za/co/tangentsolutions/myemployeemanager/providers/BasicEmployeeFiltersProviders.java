@@ -78,13 +78,26 @@ public class BasicEmployeeFiltersProviders {
         emailContainsFilter.setValue(filterFragment.emailContainsFilter());
         emailContainsFilter.setKey(EmployeeFilterProvider.emailContains.getFilterKey());
 
-        customFilters.add(genderFilter);
-        customFilters.add(raceFilter);
-        customFilters.add(positionFilter);
-        customFilters.add(startDateFilter);
-        customFilters.add(userFilter);
-        customFilters.add(birthDateRangeFilter);
-        customFilters.add(emailContainsFilter);
+        if(!genderFilter.getValue().isEmpty())
+            customFilters.add(genderFilter);
+
+        if(!raceFilter.getValue().isEmpty())
+            customFilters.add(raceFilter);
+
+        if(!positionFilter.getValue().isEmpty())
+            customFilters.add(positionFilter);
+
+        if(!startDateFilter.getValue().isEmpty())
+            customFilters.add(startDateFilter);
+
+        if(!userFilter.getValue().isEmpty())
+            customFilters.add(userFilter);
+
+        if(!birthDateRangeFilter.getValue().isEmpty())
+            customFilters.add(birthDateRangeFilter);
+
+        if(!emailContainsFilter.getValue().isEmpty())
+            customFilters.add(emailContainsFilter);
 
         return customFilters;
     }

@@ -37,7 +37,7 @@ public class EmployeeFilterFragment  extends DialogFragmentProvider {
     }
 
     public String getGenderFilter(){
-        return gender;
+        return (gender == null)? "" : gender;
     }
 
     public String getRaceFilter(){
