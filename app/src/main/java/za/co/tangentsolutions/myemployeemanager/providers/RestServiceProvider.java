@@ -5,7 +5,7 @@ public enum RestServiceProvider {
     authenticate("api-token-auth/"),
     userDetails("api/user/me/"),
     employee("api/employee/"),
-    review("api/review/");
+    fullEmployee("employee/me/");
 
     private String path;
 

@@ -68,7 +68,7 @@ public class EmployeeStatsPrestenter extends BaseChildPresenter implements Emplo
         String service = RestServiceProvider.employee.getPath();
         String url = currentenvironment + service;
 
-        return new HttpConnectionProvider().makeOathCall(url, "GET", true, true, httpConTimeout, 2, this);
+        return new HttpConnectionProvider().makeOathCall(url, "GET", true, true, httpConTimeout, this);
     }
 
     @Override

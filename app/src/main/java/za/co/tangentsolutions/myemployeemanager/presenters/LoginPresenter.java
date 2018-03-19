@@ -56,7 +56,7 @@ public class LoginPresenter extends BaseAsyncPresenter implements LoginPresenter
         payload.putString("password", password);
 
       //  return new HttpConnectionProvider(payload).makeCallForData(url, "POST", true, true, httpConTimeout,this);
-        return new HttpConnectionProvider().makeOathCall(url, "POST", true, true, httpConTimeout, 0, this);
+        return new HttpConnectionProvider().makeOathCall(url, "POST", true, true, httpConTimeout, this);
     }
 
     @Override
@@ -64,7 +64,7 @@ public class LoginPresenter extends BaseAsyncPresenter implements LoginPresenter
         String service = RestServiceProvider.userDetails.getPath();
         String url = currentenvironment + service;
 
-        return new HttpConnectionProvider().makeOathCall(url, "GET", true, true, httpConTimeout, 1, this);
+        return new HttpConnectionProvider().makeOathCall(url, "GET", true, true, httpConTimeout, this);
     }
 
     @Override

@@ -120,10 +120,10 @@ public class EmployeeProfilePresenter extends BaseChildPresenter implements Empl
 
     @Override
     public String makeFullEmployeeDetailsHttpCall() throws IOException {
-        String service = RestServiceProvider.authenticate.getPath();
+        String service = RestServiceProvider.fullEmployee.getPath();
         String url = currentenvironment + service;
 
-        return new HttpConnectionProvider().makeOathCall(url, "GET", true, true, httpConTimeout, 3, this);
+        return new HttpConnectionProvider().makeOathCall(url, "GET", true, true, httpConTimeout,  this);
     }
 
     @Override

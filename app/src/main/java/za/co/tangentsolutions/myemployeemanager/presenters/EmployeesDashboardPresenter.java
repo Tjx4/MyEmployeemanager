@@ -70,7 +70,7 @@ public class EmployeesDashboardPresenter extends BaseSlideMenuPresenter implemen
 
     @Override
     public String makeEmployeesHttpCall() throws IOException {
-        String service = RestServiceProvider.authenticate.getPath();
+        String service = RestServiceProvider.employee.getPath();
         String url = currentenvironment + service;
 
         Bundle payload = new Bundle();
@@ -82,7 +82,7 @@ public class EmployeesDashboardPresenter extends BaseSlideMenuPresenter implemen
             payload.putString(currentFilter.getKey(), currentFilter.getValue());
         }
 
-        return new HttpConnectionProvider(payload).makeOathCall(url, "GET", true, true, httpConTimeout, 2, this);
+        return new HttpConnectionProvider(payload).makeOathCall(url, "GET", true, true, httpConTimeout, this);
     }
 
     @Override
