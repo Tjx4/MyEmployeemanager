@@ -46,13 +46,13 @@ public class BasicEmployeeFiltersProviders {
 
         EmployeeFilterModel avancedFilter = new EmployeeFilterModel();
         avancedFilter.setDisplayText("Custom filter");
-        maleOnlyFilter.setDisplayText(activity.getString(R.string.custom_filter_display));
+        avancedFilter.setDisplayText(activity.getString(R.string.custom_filter_display));
         avancedFilter.setIcon(R.drawable.advanced_icon);
 
         EmployeeFilterModel noFilter = new EmployeeFilterModel();
         avancedFilter.setDisplayText("Show all");
         avancedFilter.setDisplayText(activity.getString(R.string.showing_all));
-        avancedFilter.setIcon(R.drawable.advanced_icon);
+        avancedFilter.setIcon(R.drawable.all_icon);
 
         List<EmployeeFilterModel> basicFilters = new ArrayList<>();
         basicFilters.add(femaleOnlyFilter);
@@ -60,6 +60,7 @@ public class BasicEmployeeFiltersProviders {
         basicFilters.add(birthdayMonthFilter);
         basicFilters.add(startedThisMonthFilter);
         basicFilters.add(avancedFilter);
+        basicFilters.add(noFilter);
 
         return basicFilters;
     }
