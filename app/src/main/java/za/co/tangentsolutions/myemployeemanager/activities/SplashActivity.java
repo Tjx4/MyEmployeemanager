@@ -23,7 +23,7 @@ public class SplashActivity extends AppCompatActivity {
         appLogo = findViewById(R.id.imgLogo);
         appLogo.animate()
                 .alpha(1.0f)
-                .setDuration(1000)
+                .setDuration(700)
                 .setListener(new AnimatorListenerAdapter() {
                     @Override
                     public void onAnimationEnd(Animator animation) {
