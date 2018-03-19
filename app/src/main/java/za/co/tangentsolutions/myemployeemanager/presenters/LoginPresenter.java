@@ -22,7 +22,6 @@ public class LoginPresenter extends BaseAsyncPresenter implements LoginPresenter
     public LoginPresenter(LoginActivity loginActivity) {
         super(loginActivity);
         this.loginView = loginActivity;
-        setUserClient();
     }
 
     public void handleOnLoginButtonClicked(View view){

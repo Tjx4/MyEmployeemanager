@@ -1,30 +1,34 @@
 package za.co.tangentsolutions.myemployeemanager.presenters;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import za.co.tangentsolutions.myemployeemanager.R;
 import za.co.tangentsolutions.myemployeemanager.activities.BaseActivity;
 import za.co.tangentsolutions.myemployeemanager.contracts.EmployeeStatsPrestenterContract;
 import za.co.tangentsolutions.myemployeemanager.models.EmployeeListModel;
 import za.co.tangentsolutions.myemployeemanager.models.EmployeeModel;
 import za.co.tangentsolutions.myemployeemanager.models.EmployeeStatModel;
 import za.co.tangentsolutions.myemployeemanager.models.EmployeeStatsListModel;
+import za.co.tangentsolutions.myemployeemanager.providers.UserClient;
 import za.co.tangentsolutions.myemployeemanager.views.EmployeeStatsView;
 
 public class EmployeeStatsPrestenter extends BaseChildPresenter implements EmployeeStatsPrestenterContract {
 
     private EmployeeStatsView employeeStatsView;
     private List<EmployeeStatModel> employeeStatsList;
-    private EmployeeModel currentEmplyee;
     private EmployeeStatsListModel employeeStatsListModel;
     private int statsCount;
 
     public EmployeeStatsPrestenter(BaseActivity activity) {
         super(activity);
         employeeStatsView = (EmployeeStatsView)activity;
-        showEmployeeStats();
+        employeeStatsList = new ArrayList<>();
+        employeeStatsListModel = new EmployeeStatsListModel();
+        fetchRemoteEmployeesAndShowStats();
     }
 
     @Override
@@ -33,10 +37,39 @@ public class EmployeeStatsPrestenter extends BaseChildPresenter implements Emplo
     }
 
     @Override
-    public void showEmployeeStats() {
-        //Make call
-    }
+    public void fetchRemoteEmployeesAndShowStats(){
+        employeeStatsView.showLoadingDialog(activity.getString(R.string.fetching_employees));
 
+        UserClient userClient = getUserClient();
+        Call<List<EmployeeModel>> call = userClient.getEmployeesList(getToken(), new HashMap<String, String>());
+
+        call.enqueue(new Callback<List<EmployeeModel>>() {
+            @Override
+            public void onResponse(Call<List<EmployeeModel>> call, Response<List<EmployeeModel>> response) {
+                if(response.isSuccessful()){
+                    List<EmployeeModel> remoteEmployeeList = response.body();
+                    EmployeeListModel employeeListModel = new EmployeeListModel();
+                    employeeListModel.setEmployee(remoteEmployeeList);
+
+                    employeeStatsListModel.setEmployeeStatsList(employeeListModel);
+                    setEmployeeStats(employeeStatsListModel.getEmployeeStatsList());
+                    employeeStatsView.porpulateStatsListView(getUserStats());
+                    statsCount = employeeStatsListModel.getEmployeeStatsList().getEmployee().size();
+                }
+                else{
+                    employeeStatsView.showHttpCallError(activity.getString((R.string.employees_fetch_error_message)));
+                    employeeStatsView.hideLoadingDialog();
+                }
+
+                employeeStatsView.hideLoadingDialog();
+            }
+
+            @Override
+            public void onFailure(Call<List<EmployeeModel>> call, Throwable t) {
+                employeeStatsView.showHttpCallError(activity.getString((R.string.connection_error_message)));
+            }
+        });
+    }
 
     @Override
     public void setEmployeeStats(EmployeeListModel currentEmployee) {
@@ -53,26 +86,9 @@ public class EmployeeStatsPrestenter extends BaseChildPresenter implements Emplo
         this.employeeStatsList = employeeStatsList;
     }
 
-
     @Override
     public List<EmployeeStatModel> getUserStats(){
         return employeeStatsList;
-    }
-
-    @Override
-    public String makeFullEmployeeDetailsHttpCall() throws IOException {
-        String service = ""; //RestServiceProvider.employee.getPath();
-        String url = currentenvironment + service;
-return null;
-    }
-
-    @Override
-    public String getEmployeeStats() throws IOException, JSONException {
-        employeeStatsListModel = new EmployeeStatsListModel();
-        String response = makeFullEmployeeDetailsHttpCall();
-        employeeStatsListModel.setModel(new JSONArray(response));
-        employeeStatsListModel.setSuccessful(true);
-        return response;
     }
 
     @Override
@@ -112,34 +128,4 @@ return null;
         return getByGenderCount(employeeList,"M").toString();
     }
 
-/*
-
-    protected void duringAsyncCall(int actionIndex) {
-        if(actionIndex == 0 && isCached())
-            return;
-
-        employeeStatsView.showLoadingDialog(activity.getString(R.string.loading_stats));
-    }
-
-
-    @Override
-    protected void afterAsyncCall(int actionIndex) {
-        if(employeeStatsListModel.isSuccessful()){
-            switch (actionIndex){
-                case 0:
-                    setEmployeeStats(employeeStatsListModel.getEmployeeStatsList());
-                    employeeStatsView.porpulateStatsListView(getUserStats());
-                    statsCount = employeeStatsListModel.getEmployeeStatsList().getEmployee().size();
-                    employeeStatsListModel.setSuccessful(false);
-                    break;
-            }
-        }
-        else {
-            employeeStatsView.showHttpCallError(activity.getString((R.string.employees_stats_error_message)));
-            super.afterAsyncCall(actionIndex);
-        }
-
-        super.afterAsyncCall(actionIndex);
-    }
-    */
 }

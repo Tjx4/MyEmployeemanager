@@ -1,10 +1,8 @@
 package za.co.tangentsolutions.myemployeemanager.models;
 
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 
 public class EmployeeStatsListModel extends BaseModel{

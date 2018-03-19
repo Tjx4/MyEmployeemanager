@@ -29,6 +29,7 @@ public abstract class BaseAsyncPresenter extends BasePresenter{
         setToken(cacheProvider.getCachedToken());
         myTasks = new ArrayList<>();
         activeViews = new ArrayList<>();
+        setUserClient();
     }
 
     public String getToken() {

@@ -33,7 +33,6 @@ public class EmployeesDashboardPresenter extends BaseSlideMenuPresenter implemen
         employeeListModel = new EmployeeListModel();
         filters = new ArrayList<>();
         params = new HashMap<>();
-        setUserClient();
         initializeEmployeeListAndBasicFilters();
     }
 
