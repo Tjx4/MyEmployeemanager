@@ -25,6 +25,7 @@ public class EmployeeProfilePresenter extends BaseChildPresenter implements Empl
     private EmployeeModel currentEmplyee;
     private boolean isMyprofile;
     private FullEmployeeProfileModel fullEmployeeProfileModel;
+    private int detailsCount;
 
     public EmployeeProfilePresenter(EmployeeProfileActivity employeeProfileActivity) {
         super(employeeProfileActivity);
@@ -41,6 +42,10 @@ public class EmployeeProfilePresenter extends BaseChildPresenter implements Empl
             setEmployeeDetails(getEmployeeFromBundle(payloadBundle));
             employeeProfileView.showEmployeeDetails(getUserDetails());
         }
+    }
+    @Override
+    public int getDetailsCount() {
+        return detailsCount;
     }
 
     @Override
@@ -159,6 +164,7 @@ public class EmployeeProfilePresenter extends BaseChildPresenter implements Empl
                 case 0:
                     setEmployeeDetails(fullEmployeeProfileModel.getEmployee());
                     employeeProfileView.showEmployeeDetails(getUserDetails());
+                    detailsCount = getUserDetails().size();
                     fullEmployeeProfileModel.setSuccessful(false);
                     break;
             }

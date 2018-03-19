@@ -2,7 +2,6 @@ package za.co.tangentsolutions.myemployeemanager.presenters;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -24,11 +23,17 @@ public class EmployeeStatsPrestenter extends BaseChildPresenter implements Emplo
     private List<EmployeeStatModel> employeeStatsList;
     private EmployeeModel currentEmplyee;
     private EmployeeStatsListModel employeeStatsListModel;
+    private int statsCount;
 
     public EmployeeStatsPrestenter(BaseActivity activity) {
         super(activity);
         employeeStatsView = (EmployeeStatsView)activity;
         showEmployeeStats();
+    }
+
+    @Override
+    public int getStatsCount() {
+        return statsCount;
     }
 
     @Override
@@ -142,7 +147,8 @@ public class EmployeeStatsPrestenter extends BaseChildPresenter implements Emplo
             switch (actionIndex){
                 case 0:
                     setEmployeeStats(employeeStatsListModel.getEmployeeStatsList());
-                    employeeStatsView.showEmployeeStats(getUserStats());
+                    employeeStatsView.porpulateStatsListView(getUserStats());
+                    statsCount = employeeStatsListModel.getEmployeeStatsList().getEmployee().size();
                     employeeStatsListModel.setSuccessful(false);
                     break;
             }

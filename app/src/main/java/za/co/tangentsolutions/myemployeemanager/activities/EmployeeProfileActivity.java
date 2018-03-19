@@ -54,4 +54,8 @@ public class EmployeeProfileActivity extends BaseChildActivity implements Employ
         employeeInfoLstV = findViewById(R.id.lstvEmployeeInfo);
         employeeInfoLstV.setAdapter(employeeDetailsAdapter);
     }
+    @Override
+    public int getListViewItemCount() {
+        return employeeInfoLstV.getCount();
+    }
 }

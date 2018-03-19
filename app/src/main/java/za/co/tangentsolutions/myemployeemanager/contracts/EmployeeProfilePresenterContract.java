@@ -16,4 +16,5 @@ public interface EmployeeProfilePresenterContract extends BasePresenterContract 
     boolean isMyprofile();
     void showMyProfileInfo();
     void setMyprofile(boolean myprofile);
+    int getDetailsCount();
 }

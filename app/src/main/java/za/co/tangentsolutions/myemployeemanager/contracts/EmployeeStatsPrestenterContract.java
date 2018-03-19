@@ -18,4 +18,5 @@ public interface EmployeeStatsPrestenterContract {
     String getByGenderCount(List<EmployeeModel> employeeList, String gender);
     String getFemaleCount(List<EmployeeModel> employeeList);
     String getMaleCount(List<EmployeeModel> employeeList);
+    int getStatsCount();
 }

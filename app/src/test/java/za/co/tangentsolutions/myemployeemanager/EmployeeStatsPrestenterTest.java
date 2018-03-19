@@ -14,6 +14,8 @@ import za.co.tangentsolutions.myemployeemanager.presenters.EmployeeStatsPrestent
 import za.co.tangentsolutions.myemployeemanager.providers.MockProvider;
 import za.co.tangentsolutions.myemployeemanager.views.EmployeeStatsView;
 
+import static org.mockito.Mockito.verify;
+
 @RunWith(MockitoJUnitRunner.class)
 public class EmployeeStatsPrestenterTest {
 
@@ -69,5 +71,11 @@ public class EmployeeStatsPrestenterTest {
         //Mock male1 is the only male employee
         String actual = "1";
         assert (actual.equals(employeeStatsPrestenter.getFemaleCount(testEmployeeList)));
+    }
+
+    @Test
+    public void shouldPorpulateList(){
+        employeeStatsView.porpulateStatsListView(testEmployeeStatList);
+        assert (employeeStatsView.getListViewItemCount() == employeeStatsPrestenter.getStatsCount())
     }
 }

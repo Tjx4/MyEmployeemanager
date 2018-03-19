@@ -23,9 +23,14 @@ public class EmloyeeStatsActivity extends BaseChildActivity implements EmployeeS
     }
 
     @Override
-    public void showEmployeeStats(List<EmployeeStatModel> employeeDetailsList) {
+    public void porpulateStatsListView(List<EmployeeStatModel> employeeDetailsList) {
         EmployeeStatsAdapter employeeStatAdapter = new EmployeeStatsAdapter(this, R.layout.employee_stat_view, employeeDetailsList);
 
         employeeStatLstV.setAdapter(employeeStatAdapter);
+    }
+
+    @Override
+    public int getListViewItemCount() {
+        return employeeStatLstV.getCount();
     }
 }

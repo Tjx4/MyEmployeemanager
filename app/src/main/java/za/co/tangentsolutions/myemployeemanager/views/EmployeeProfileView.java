@@ -11,4 +11,5 @@ public interface EmployeeProfileView extends BaseAsyncView {
     Bundle getPayloadBundle();
     void showAdminTools();
     void showEmployeeDetails(List<EmployeeDetailsModel> employeeDetailsList);
+    int getListViewItemCount();
 }
