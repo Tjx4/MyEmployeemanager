@@ -6,13 +6,19 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.io.IOException;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import za.co.tangentsolutions.myemployeemanager.R;
 import za.co.tangentsolutions.myemployeemanager.activities.LoginActivity;
 import za.co.tangentsolutions.myemployeemanager.contracts.LoginPresenterContract;
 import za.co.tangentsolutions.myemployeemanager.models.LoginModel;
+import za.co.tangentsolutions.myemployeemanager.models.LoginObject;
 import za.co.tangentsolutions.myemployeemanager.models.UserModel;
 import za.co.tangentsolutions.myemployeemanager.providers.HttpConnectionProvider;
 import za.co.tangentsolutions.myemployeemanager.providers.RestServiceProvider;
+import za.co.tangentsolutions.myemployeemanager.providers.UserClient;
 import za.co.tangentsolutions.myemployeemanager.views.LoginView;
 
 public class LoginPresenter extends BaseAsyncPresenter implements LoginPresenterContract {
@@ -26,6 +32,7 @@ public class LoginPresenter extends BaseAsyncPresenter implements LoginPresenter
     public LoginPresenter(LoginActivity loginActivity) {
         super(loginActivity);
         this.loginView = loginActivity;
+        setUserClient();
     }
 
     public void handleOnLoginButtonClicked(View view){
@@ -35,7 +42,8 @@ public class LoginPresenter extends BaseAsyncPresenter implements LoginPresenter
 
         if(!username.isEmpty()){
             if(!password.isEmpty()){
-                new DoAsyncCall(0, view).execute();
+                //new DoAsyncCall(0, view).execute();
+                makeLoginCall();
             }
             else{
                 loginView.showEmptyPasswordError(R.string.invalid_password_error_message);
@@ -55,8 +63,8 @@ public class LoginPresenter extends BaseAsyncPresenter implements LoginPresenter
         payload.putString("username", username);
         payload.putString("password", password);
 
-      //  return new HttpConnectionProvider(payload).makeCallForData(url, "POST", true, true, httpConTimeout,this);
-        return new HttpConnectionProvider().makeOathCall(url, "POST", true, true, httpConTimeout, this);
+        return new HttpConnectionProvider(payload).makeCallForData(url, "POST", true, true, httpConTimeout,this, false);
+
     }
 
     @Override
@@ -64,7 +72,65 @@ public class LoginPresenter extends BaseAsyncPresenter implements LoginPresenter
         String service = RestServiceProvider.userDetails.getPath();
         String url = currentenvironment + service;
 
-        return new HttpConnectionProvider().makeOathCall(url, "GET", true, true, httpConTimeout, this);
+        return new HttpConnectionProvider().makeCallForData(url, "GET", true, true, httpConTimeout,this, true);
+     }
+
+
+    public void makeLoginCall(){
+        loginView.showLoadingDialog("Loging in");
+
+        LoginObject loginObject = new LoginObject(username, password);
+        UserClient userClien = getUserClient();
+        Call<LoginModel> call1 = userClien.loginUser(loginObject);
+        call1.enqueue(new Callback<LoginModel>() {
+            @Override
+            public void onResponse(Call<LoginModel> call, Response<LoginModel> response) {
+                if(response.isSuccessful()){
+                    LoginModel loginModel = response.body();
+                    String token = loginModel.getToken();
+                    setToken(token);
+                    makeUserDetailsCall();
+                }
+                else{
+                    //Do somethinig when failed
+                    loginView.hideLoadingDialog();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<LoginModel> call, Throwable t) {
+
+            }
+        });
+    }
+
+
+    @Override
+    public void makeUserDetailsCall(){
+        UserClient userClien = getUserClient();
+        String token = getToken();
+        Call<UserModel> call = userClien.getUser(token);
+
+        call.enqueue(new Callback<UserModel>() {
+            @Override
+            public void onResponse(Call<UserModel> call, Response<UserModel> response) {
+                if(response.isSuccessful()){
+                    cacheProvider.cacheUser(userModel);
+                    loginView.startEmployeesDashboardActivity();
+                    loginView.hideLoadingDialog();
+                }
+                else{
+                    loginView.showHttpCallError(activity.getString((R.string.login_error_message)));
+                    loginView.hideLoadingDialog();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UserModel> call, Throwable t) {
+                loginView.showHttpCallError(activity.getString((R.string.connection_error_message)));
+            }
+        });
+
     }
 
     @Override
@@ -125,7 +191,7 @@ public class LoginPresenter extends BaseAsyncPresenter implements LoginPresenter
                 break;
                 case 1:
                      cacheProvider.cacheUser(userModel);
-                     loginView.startEmployeesActivity();
+                     loginView.startEmployeesDashboardActivity();
                  break;
             }
 

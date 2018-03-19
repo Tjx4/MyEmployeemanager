@@ -9,5 +9,5 @@ public interface LoginView extends BaseAsyncView {
     void showLoginError(String errorMessage);
     void showEmptyUsernameError(int error_msg_resource);
     void showEmptyPasswordError(int error_msg_resource);
-    void startEmployeesActivity();
+    void startEmployeesDashboardActivity();
 }

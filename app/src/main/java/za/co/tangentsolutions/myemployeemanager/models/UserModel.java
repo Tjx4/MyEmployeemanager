@@ -12,6 +12,7 @@ public class UserModel {
     private boolean is_active;
     private boolean is_staff;
     private boolean is_superUser;
+    private String token;
 
     public void setModel(JSONObject userJson) throws JSONException {
         setId(userJson.getInt("id"));
@@ -24,6 +25,14 @@ public class UserModel {
 
         if(userJson.has("is_superUser"))
             setIs_superUser(userJson.getBoolean("is_superUser"));
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 
     public boolean isIs_superUser() {

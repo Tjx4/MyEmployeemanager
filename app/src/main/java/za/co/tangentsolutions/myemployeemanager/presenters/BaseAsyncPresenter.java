@@ -6,9 +6,13 @@ import android.view.View;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 import za.co.tangentsolutions.myemployeemanager.activities.BaseActivity;
 import za.co.tangentsolutions.myemployeemanager.activities.BaseAsyncActivity;
 import za.co.tangentsolutions.myemployeemanager.constants.Constants;
+import za.co.tangentsolutions.myemployeemanager.providers.UserClient;
 
 public abstract class BaseAsyncPresenter extends BasePresenter{
 
@@ -20,6 +24,7 @@ public abstract class BaseAsyncPresenter extends BasePresenter{
     protected List<View> activeViews;
     protected View clickedView;
     protected boolean isFromServer, isCheckingUpdates;
+    private UserClient userClient;
 
     public BaseAsyncPresenter(BaseActivity activity) {
         super(activity);
@@ -30,7 +35,7 @@ public abstract class BaseAsyncPresenter extends BasePresenter{
     }
 
     public String getToken() {
-        return token;
+        return "Token "+token;
     }
 
     public void setToken(String token) {
@@ -155,5 +160,19 @@ public abstract class BaseAsyncPresenter extends BasePresenter{
     protected void checkAndUpdate() {
         isCheckingUpdates = true;
         new DoAsyncCall(0).execute();
+    }
+
+
+    public void setUserClient(){
+        Retrofit.Builder builder = new Retrofit.Builder()
+                .baseUrl(currentenvironment)
+                .addConverterFactory(GsonConverterFactory.create());
+        Retrofit retrofit = builder.build();
+
+        userClient = retrofit.create(UserClient.class);
+    }
+
+    public UserClient getUserClient(){
+        return userClient;
     }
 }

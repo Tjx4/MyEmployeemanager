@@ -59,7 +59,7 @@ public class LoginActivity extends BaseAsyncActivity implements LoginView {
     }
 
     @Override
-    public void startEmployeesActivity() {
+    public void startEmployeesDashboardActivity() {
         goToEmployeesDashboard();
     }
 

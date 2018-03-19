@@ -21,8 +21,17 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 import za.co.tangentsolutions.myemployeemanager.activities.BaseActivity;
 import za.co.tangentsolutions.myemployeemanager.activities.BaseAsyncActivity;
+import za.co.tangentsolutions.myemployeemanager.models.LoginModel;
+import za.co.tangentsolutions.myemployeemanager.models.LoginObject;
+import za.co.tangentsolutions.myemployeemanager.models.UserModel;
 import za.co.tangentsolutions.myemployeemanager.presenters.BaseAsyncPresenter;
 
 public class HttpConnectionProvider {
@@ -33,32 +42,45 @@ public class HttpConnectionProvider {
     private String requestMethod;
     private boolean doInput;
     private boolean doOutput;
+    private boolean isUserToken;
     private int connectionTimeout;
     private HttpURLConnection httpConnect;
     private final String BASE_HTTP_LOG = "http_log";
 
     public HttpConnectionProvider(Bundle... values) {
-        if (values != null && values.length > 0)
+        if (values != null)
+            this.values = new Bundle();
+
+        if (values.length > 0)
             this.values = values[0];
     }
 
-    public String makeOathCall(String stringUrl, String requestMethod, boolean doInput, boolean doOutput, int connectionTimeout, BaseAsyncPresenter presenter) throws UnsupportedEncodingException {
+    String token;
 
-        this.presenter = presenter;
+
+
+
+
+    public String makeOathCall(String stringUrl, String requestMethod, boolean doInput, boolean doOutput, int connectionTimeout, BaseAsyncPresenter presenter) throws UnsupportedEncodingException, IOException {
+
+        String ressponse = "";
+
+
+       /* this.presenter = presenter;
         String encoding = "UTF-8";
         String postData = getPostData(encoding);
 
         if (requestMethod.equals("GET"))
             stringUrl += (postData.isEmpty())? "" : "?"+postData;
+        return "";*/
 
-
-
-        return "";
+       return ressponse;
     }
 
-    public String makeCallForData(String stringUrl, String requestMethod, boolean doInput, boolean doOutput, int connectionTimeout, BaseAsyncPresenter presenter) throws MalformedURLException, IOException {
+    public String makeCallForData(String stringUrl, String requestMethod, boolean doInput, boolean doOutput, int connectionTimeout, BaseAsyncPresenter presenter, boolean isUserToken) throws MalformedURLException, IOException {
 
         this.presenter = presenter;
+        this.isUserToken = isUserToken;
         String encoding = "UTF-8";
         String postData = getPostData(encoding);
 
@@ -108,10 +130,16 @@ public class HttpConnectionProvider {
         httpConnect.setConnectTimeout(connectionTimeout);
 
         //Header
-        //String authorization = values.getString("username")+":"+values.getString("password");
-        //String encodedAuth = "Basic  "+ android.util.Base64.encode(authorization.getBytes(), 0);
-        httpConnect.setRequestProperty("Authorization", "Token token" + presenter.getToken());
-        httpConnect.setRequestProperty("Accept","*/*");
+        if(isUserToken){
+            String token = presenter.getToken();
+            httpConnect.setRequestProperty("Authorization", ": Token "+token);
+        }
+        else{
+            String authorization = values.getString("username")+":"+values.getString("password");
+            String encodedAuth = "Basic  "+ android.util.Base64.encode(authorization.getBytes(), 0);
+            httpConnect.setRequestProperty("Authorization", encodedAuth);
+            httpConnect.setRequestProperty("Accept","*/*");
+        }
 
         return httpConnect;
     }
@@ -125,8 +153,8 @@ public class HttpConnectionProvider {
     }
 
     private String getPostData(String encoding) throws UnsupportedEncodingException {
-        String postData = "";
 
+        String postData = "";
         String key;
 
         if (values == null)

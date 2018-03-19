@@ -73,6 +73,6 @@ public class LoginPresenterTest {
 
     @Test
     public void shouldGoToEmployeeDashboardIfLoginSuccessful() throws Exception {
-        verify(loginView).startEmployeesActivity();
+        verify(loginView).startEmployeesDashboardActivity();
     }
 }
