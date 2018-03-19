@@ -15,8 +15,6 @@ import za.co.tangentsolutions.myemployeemanager.views.LoginView;
 
 public class LoginPresenter extends BaseAsyncPresenter implements LoginPresenterContract {
 
-    private LoginModel loginModel;
-    private UserModel userModel;
     private LoginView loginView;
     private String username;
     private String password;
@@ -77,13 +75,13 @@ public class LoginPresenter extends BaseAsyncPresenter implements LoginPresenter
     @Override
     public void makeUserDetailsCall(){
         UserClient userClien = getUserClient();
-        String token = getToken();
-        Call<UserModel> call = userClien.getUser(token);
+        Call<UserModel> call = userClien.getUser(getToken());
 
         call.enqueue(new Callback<UserModel>() {
             @Override
             public void onResponse(Call<UserModel> call, Response<UserModel> response) {
                 if(response.isSuccessful()){
+                    UserModel userModel = response.body();
                     cacheProvider.cacheUser(userModel);
                     loginView.startEmployeesDashboardActivity();
                     loginView.hideLoadingDialog();
