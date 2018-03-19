@@ -6,6 +6,7 @@ import com.google.gson.Gson;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import za.co.tangentsolutions.myemployeemanager.activities.BaseActivity;
+import za.co.tangentsolutions.myemployeemanager.constants.Constants;
 import za.co.tangentsolutions.myemployeemanager.models.EmployeeListModel;
 import za.co.tangentsolutions.myemployeemanager.models.EmployeeModel;
 import za.co.tangentsolutions.myemployeemanager.models.UserModel;
@@ -20,7 +21,7 @@ public class CacheProvider {
     private static final String USER = "user";
 
     public CacheProvider(BaseActivity activity) {
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity);
+       sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity);
     }
 
     public void cacheToken(String token){

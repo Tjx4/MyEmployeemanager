@@ -13,6 +13,7 @@ public class Constants {
     public static final String POSITION_KEY = "position_key";
     public static final String PHONENUMBER_KEY = "phonenumber_key";
     public static final String EMAIL_KEY = "email_key";
+    public static final String MOCK_ACTIVITY = "mock_activiy";
     public static final String ISACTIVE_KEY = "isactive_key";
     public static final String ISSTUFF_KEY = "isstuff_key";
     public static final String ISSUPERUSER_KEY = "issuperuser_key";
