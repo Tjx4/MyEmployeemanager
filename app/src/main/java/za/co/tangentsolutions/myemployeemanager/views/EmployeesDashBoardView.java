@@ -16,5 +16,5 @@ public interface EmployeesDashBoardView extends BaseAsyncView {
     void onFilterButtonClicked(View view);
     void showEmptyFilterWarnigToast(int warningStringRes);
     EmployeeFilterFragment getFilterFragment();
-    void setFilterTitle(int titleRes);
+    void setFilterTitle(String title);
 }

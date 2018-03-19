@@ -78,7 +78,7 @@ public class EmployeesDashBoardActivity extends BaseSlideMenuActivity implements
     }
 
     @Override
-    public void setFilterTitle(int titleRes) {
+    public void setFilterTitle(String titleRes) {
         filterTitleTxt.setText(titleRes);
     }
 

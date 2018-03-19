@@ -9,7 +9,6 @@ import za.co.tangentsolutions.myemployeemanager.activities.EmployeesDashBoardAct
 import za.co.tangentsolutions.myemployeemanager.fragments.EmployeeFilterFragment;
 import za.co.tangentsolutions.myemployeemanager.presenters.EmployeesDashboardPresenter;
 import za.co.tangentsolutions.myemployeemanager.views.EmployeesDashBoardView;
-
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -60,7 +59,7 @@ public class EmployeesDashboardPresenterTest {
         when(employeesDashBoardView.getFilterFragment().getGenderFilter()).thenReturn("F");
         employeesDashBoardView.onFilterButtonClicked(null);
 
-        verify(employeesDashBoardView).setFilterTitle(R.string.women_only_custom_filter_display);
+        verify(employeesDashBoardView).setFilterTitle(employeesDashboardActivity.getString(R.string.women_only_custom_filter_display));
     }
 
     @Test
@@ -68,7 +67,7 @@ public class EmployeesDashboardPresenterTest {
         when(employeesDashBoardView.getFilterFragment().getGenderFilter()).thenReturn("M");
         employeesDashBoardView.onFilterButtonClicked(null);
 
-        verify(employeesDashBoardView).setFilterTitle(R.string.men_only_custom_filter_display);
+        verify(employeesDashBoardView).setFilterTitle(employeesDashboardActivity.getString(R.string.men_only_custom_filter_display));
     }
 
     @Test
@@ -76,6 +75,6 @@ public class EmployeesDashboardPresenterTest {
         when(employeesDashBoardView.getFilterFragment().getStartDateRangeFilter()).thenReturn("1");
         employeesDashBoardView.onFilterButtonClicked(null);
 
-        verify(employeesDashBoardView).setFilterTitle(R.string.this_month_custom_filter_display);
+        verify(employeesDashBoardView).setFilterTitle(employeesDashboardActivity.getString(R.string.this_month_custom_filter_display));
     }
 }
