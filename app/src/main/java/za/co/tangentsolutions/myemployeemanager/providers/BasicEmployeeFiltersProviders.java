@@ -34,7 +34,7 @@ public class BasicEmployeeFiltersProviders {
         startedThisMonthFilter.setKey(EmployeeFilterProvider.startDate.getFilterKey());
 
         EmployeeFilterModel avancedFilter = new EmployeeFilterModel();
-        avancedFilter.setDisplayText("Advanced filter");
+        avancedFilter.setDisplayText("Custom filter");
         avancedFilter.setIcon(R.drawable.advanced_icon);
 
         List<EmployeeFilterModel> basicFilters = new ArrayList<>();
