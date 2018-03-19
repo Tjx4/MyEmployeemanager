@@ -26,6 +26,6 @@
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_slide_menu"
-        app:menu="@menu/activity_true_employees_drawer"/>
+        app:menu="@menu/employees_dashboar_overflow_menu_drawer"/>
 
 </android.support.v4.widget.DrawerLayout>

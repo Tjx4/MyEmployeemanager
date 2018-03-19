@@ -68,7 +68,7 @@ public abstract class BaseSlideMenuActivity extends BaseAsyncActivity implements
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_employees_dash_board_dashboard_drawer, menu);
+        getMenuInflater().inflate(R.menu.employees_dashboar_overflow_menu_drawer, menu);
         return true;
     }
 
