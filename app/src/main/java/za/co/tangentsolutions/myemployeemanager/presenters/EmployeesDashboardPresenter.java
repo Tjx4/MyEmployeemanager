@@ -174,7 +174,9 @@ public class EmployeesDashboardPresenter extends BaseSlideMenuPresenter implemen
                     }
                     else{
                         showEmployeesList(employeeListModel.getEmployee());
-                        cacheProvider.cacheEmployeeList(employeeListModel);
+
+                        if(filters.isEmpty())
+                            cacheProvider.cacheEmployeeList(employeeListModel);
                     }
                 }
                 else{
