@@ -1,5 +1,7 @@
 package za.co.tangentsolutions.myemployeemanager;
 
+import android.view.View;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -31,19 +33,19 @@ public class EmployeesDashboardPresenterTest {
     }
 
     @Test
-    public void testThatEmployeeListIsPorpulatedWithRightData(){
-        //verify(employeesDashBoardView).showEmptyUsernameError(R.string.invalid_username_error_message);
-    }
-
-    @Test
     public void shouldToggleFilterList(){
-        //verify(employeesDashBoardView).showEmptyUsernameError(R.string.invalid_username_error_message);
-    }
+        employeesDashBoardView.toggleFilterSpinner(null);
+        int actual = employeesDashBoardView.getFilterListVisibility();
+        assert (actual == View.VISIBLE);
 
+        employeesDashBoardView.toggleFilterSpinner(null);
+        actual = employeesDashBoardView.getFilterListVisibility();
+        assert (actual == View.GONE);
+    }
 
     @Test
     public void shouldShorWarningToastIfFiltersAreEmpty(){
-        //verify(employeesDashBoardView).showEmptyUsernameError(R.string.invalid_username_error_message);
+        verify(employeesDashBoardView).showEmptyFilterWarnigToast(R.string.no_filter_warning_string);
     }
 
     @Test

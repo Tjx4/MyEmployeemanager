@@ -71,6 +71,11 @@ public class EmployeesDashBoardActivity extends BaseSlideMenuActivity implements
     }
 
     @Override
+    public int getFilterListVisibility() {
+        return filtersSpnr.getVisibility();
+    }
+
+    @Override
     public void toggleFilterSpinner(View view) {
         if (filtersSpnr.getVisibility() == View.GONE) {
             filtersSpnr.setVisibility(View.VISIBLE);
