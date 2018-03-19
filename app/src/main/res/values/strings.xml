@@ -2,6 +2,7 @@
     <string name="invalid_username_error_message">Please enter your username</string>
     <string name="invalid_password_error_message">Please enter your password</string>
     <string name="connection_error_message">Failed to connect</string>
+    <string name="logging_in">Logging in</string>
     <string name="login_error_message">Please check your username and password</string>
     <string name="employees_fetch_error_message">There was an problem while fetching employees list</string>
     <string name="full_employees_fetch_error_message">Full employee profile fetch error</string>

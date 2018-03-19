@@ -9,8 +9,6 @@ import za.co.tangentsolutions.myemployeemanager.models.EmployeeModel;
 
 public interface EmployeeProfilePresenterContract extends BasePresenterContract {
     List<EmployeeDetailsModel> getUserDetails();
-    String getfullEmployeeDetails() throws IOException, JSONException;
-    String makeFullEmployeeDetailsHttpCall() throws IOException;
     void setEmployeeDetails(EmployeeModel currentEmployee);
     EmployeeModel getEmployeeFromBundle(Bundle payloadBundle);
     boolean isMyprofile();

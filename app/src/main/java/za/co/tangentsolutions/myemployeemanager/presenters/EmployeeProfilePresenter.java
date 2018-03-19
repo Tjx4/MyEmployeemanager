@@ -1,9 +1,6 @@
 package za.co.tangentsolutions.myemployeemanager.presenters;
 
 import android.os.Bundle;
-import org.json.JSONException;
-import org.json.JSONObject;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import za.co.tangentsolutions.myemployeemanager.R;
@@ -15,8 +12,6 @@ import za.co.tangentsolutions.myemployeemanager.models.EmployeeModel;
 import za.co.tangentsolutions.myemployeemanager.models.FullEmployeeProfileModel;
 import za.co.tangentsolutions.myemployeemanager.models.PositionModel;
 import za.co.tangentsolutions.myemployeemanager.models.UserModel;
-import za.co.tangentsolutions.myemployeemanager.providers.HttpConnectionProvider;
-import za.co.tangentsolutions.myemployeemanager.providers.RestServiceProvider;
 import za.co.tangentsolutions.myemployeemanager.views.EmployeeProfileView;
 
 public class EmployeeProfilePresenter extends BaseChildPresenter implements EmployeeProfilePresenterContract {
@@ -50,7 +45,7 @@ public class EmployeeProfilePresenter extends BaseChildPresenter implements Empl
 
     @Override
     public void showMyProfileInfo() {
-        new DoAsyncCall(0).execute();
+        // make call
     }
 
     @Override
@@ -118,43 +113,14 @@ public class EmployeeProfilePresenter extends BaseChildPresenter implements Empl
         return employeeDetailsList;
     }
 
-    @Override
-    public String makeFullEmployeeDetailsHttpCall() throws IOException {
-        String service = RestServiceProvider.fullEmployee.getPath();
-        String url = currentenvironment + service;
 
-        return new HttpConnectionProvider().makeOathCall(url, "GET", true, true, httpConTimeout,  this);
-    }
-
-    @Override
-    public String getfullEmployeeDetails() throws IOException, JSONException {
-        fullEmployeeProfileModel = new FullEmployeeProfileModel();
-        String response = makeFullEmployeeDetailsHttpCall();
-        fullEmployeeProfileModel.setModel(new JSONObject(response));
-        return response;
-    }
-
+    /*
     @Override
     protected void duringAsyncCall(int actionIndex) {
         if(actionIndex == 0 && isCached())
             return;
 
         employeeProfileView.showLoadingDialog(activity.getString(R.string.loading_your_profile));
-    }
-
-    @Override
-    protected Object doAsyncOperation(DoAsyncCall currentTusk, int actionIndex) throws Exception {
-        super.doAsyncOperation(currentTusk, actionIndex);
-
-        String response = null;
-
-        switch (actionIndex){
-            case 0:
-                response = getfullEmployeeDetails();
-                break;
-        }
-
-        return response;
     }
 
     @Override
@@ -176,4 +142,5 @@ public class EmployeeProfilePresenter extends BaseChildPresenter implements Empl
 
         super.afterAsyncCall(actionIndex);
     }
+    */
 }

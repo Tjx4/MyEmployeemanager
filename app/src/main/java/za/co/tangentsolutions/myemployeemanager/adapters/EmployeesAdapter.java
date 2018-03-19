@@ -33,8 +33,13 @@ public class EmployeesAdapter extends ArrayAdapter {
         LayoutInflater layoutInflater = activity.getLayoutInflater();
         View parentView = layoutInflater.inflate(layout, parent, false);
 
-        if(currentUserId == employeeList.get(position).getUser().getId())
+       /*
+       //Skip if is current user
+        if(currentUserId == employeeList.get(position).getUser().getId()) {
+            parentView.setVisibility(View.GONE);
             return parentView;
+        }
+        */
 
         String firstName = employeeList.get(position).getUser().getFirst_name();
         String sirName = employeeList.get(position).getUser().getLast_name();

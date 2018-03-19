@@ -2,11 +2,9 @@ package za.co.tangentsolutions.myemployeemanager.presenters;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import za.co.tangentsolutions.myemployeemanager.R;
 import za.co.tangentsolutions.myemployeemanager.activities.BaseActivity;
 import za.co.tangentsolutions.myemployeemanager.contracts.EmployeeStatsPrestenterContract;
 import za.co.tangentsolutions.myemployeemanager.models.EmployeeListModel;
@@ -14,7 +12,6 @@ import za.co.tangentsolutions.myemployeemanager.models.EmployeeModel;
 import za.co.tangentsolutions.myemployeemanager.models.EmployeeStatModel;
 import za.co.tangentsolutions.myemployeemanager.models.EmployeeStatsListModel;
 import za.co.tangentsolutions.myemployeemanager.providers.HttpConnectionProvider;
-import za.co.tangentsolutions.myemployeemanager.providers.RestServiceProvider;
 import za.co.tangentsolutions.myemployeemanager.views.EmployeeStatsView;
 
 public class EmployeeStatsPrestenter extends BaseChildPresenter implements EmployeeStatsPrestenterContract {
@@ -38,7 +35,7 @@ public class EmployeeStatsPrestenter extends BaseChildPresenter implements Emplo
 
     @Override
     public void showEmployeeStats() {
-        new DoAsyncCall(0).execute();
+        //Make call
     }
 
 
@@ -65,7 +62,7 @@ public class EmployeeStatsPrestenter extends BaseChildPresenter implements Emplo
 
     @Override
     public String makeFullEmployeeDetailsHttpCall() throws IOException {
-        String service = RestServiceProvider.employee.getPath();
+        String service = ""; //RestServiceProvider.employee.getPath();
         String url = currentenvironment + service;
 
         return new HttpConnectionProvider().makeOathCall(url, "GET", true, true, httpConTimeout, this);
@@ -117,27 +114,13 @@ public class EmployeeStatsPrestenter extends BaseChildPresenter implements Emplo
         return getByGenderCount(employeeList,"M").toString();
     }
 
-    @Override
+/*
+
     protected void duringAsyncCall(int actionIndex) {
         if(actionIndex == 0 && isCached())
             return;
 
         employeeStatsView.showLoadingDialog(activity.getString(R.string.loading_stats));
-    }
-
-    @Override
-    protected Object doAsyncOperation(DoAsyncCall currentTusk, int actionIndex) throws Exception {
-        super.doAsyncOperation(currentTusk, actionIndex);
-
-        String response = null;
-
-        switch (actionIndex){
-            case 0:
-                response = getEmployeeStats();
-                break;
-        }
-
-        return response;
     }
 
 
@@ -160,4 +143,5 @@ public class EmployeeStatsPrestenter extends BaseChildPresenter implements Emplo
 
         super.afterAsyncCall(actionIndex);
     }
+    */
 }

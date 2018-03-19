@@ -1,7 +1,6 @@
 package za.co.tangentsolutions.myemployeemanager.constants;
 
 import za.co.tangentsolutions.myemployeemanager.providers.HostProvider;
-import za.co.tangentsolutions.myemployeemanager.providers.RestServiceProvider;
 
 public class Constants {
     public static final String CURRENTENVIRONMENT = HostProvider.tangentHost.getUrl();
@@ -21,7 +20,8 @@ public class Constants {
     public static final String LAYOUT = "layout";
     public static final String TITLE = "title";
 
-    //
     public static final String LOGIN = "api-token-auth/";
     public static final String CURRENT_USER = "api/user/me/";
+    public static final String EMPLOYEES = "api/employee/";
+    public static final String EMPLOYEE = "employee/me/";
 }

@@ -3,14 +3,11 @@ package za.co.tangentsolutions.myemployeemanager.presenters;
 import android.os.AsyncTask;
 import android.view.MenuItem;
 import android.view.View;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import za.co.tangentsolutions.myemployeemanager.activities.BaseActivity;
-import za.co.tangentsolutions.myemployeemanager.activities.BaseAsyncActivity;
 import za.co.tangentsolutions.myemployeemanager.constants.Constants;
 import za.co.tangentsolutions.myemployeemanager.providers.UserClient;
 
@@ -54,96 +51,8 @@ public abstract class BaseAsyncPresenter extends BasePresenter{
         killAllTasks();
         return false;
     }
-
-    protected void beforeAsyncCall(int actionIndex){
-        activity.hidePhoneKeyboard();
-    }
-
-    protected void duringAsyncCall(int actionIndex){
-
-    }
-    protected Object doAsyncOperation(DoAsyncCall currentTusk, int actionIndex) throws Exception{
-        currentTusk.publishTheProgress();
-        this.asyncAction = actionIndex;
-        return null;
-    }
-
-    protected void afterAsyncCall(int actionIndex){
-        if(clickedView != null)
-            clickedView = null;
-
-        isFromServer = false;
-
-        BaseAsyncActivity baseAsyncActivity = (BaseAsyncActivity)activity;
-        baseAsyncActivity.hideLoadingDialog();
-        isFromServer = false;
-
-    }
-
     protected boolean isCached() {
         return false;
-    }
-
-    public class DoAsyncCall extends AsyncTask<Integer, Integer, Object> {
-
-        private View triggerView;
-        private int actionIndex;
-
-        public DoAsyncCall(int actionIndex, View...triggerViews) {
-            if(triggerViews != null && triggerViews.length > 0)
-                this.triggerView = triggerViews[0];
-
-            this.actionIndex = actionIndex;
-        }
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            beforeAsyncCall(actionIndex);
-        }
-
-        @Override
-        protected void onProgressUpdate(Integer...values) {
-            super.onProgressUpdate(values);
-            duringAsyncCall(actionIndex);
-        }
-
-        public void publishTheProgress(){
-            publishProgress(actionIndex);
-        }
-
-        @Override
-        protected Object doInBackground(Integer...actionIndexs) {
-            Object res;
-            myTasks.add(this);
-
-            try {
-                res = doAsyncOperation(this, actionIndex);
-            }
-            catch (IOException e){
-                res = "Error! "+e;
-            }
-            catch (InterruptedException e){
-                res = "Error! "+e;
-            } catch (Exception e) {
-                res = "Error! "+e;
-            }
-            return res;
-        }
-
-        @Override
-        protected void onPostExecute(Object outputData) {
-            if(appDisposed())
-                return;
-
-            super.onPostExecute(outputData);
-            afterAsyncCall(actionIndex);
-            resetIfTriggeredByView(triggerView);
-        }
-
-        private boolean appDisposed() {
-            return activity == null;
-        }
     }
 
     @Override
@@ -159,7 +68,6 @@ public abstract class BaseAsyncPresenter extends BasePresenter{
 
     protected void checkAndUpdate() {
         isCheckingUpdates = true;
-        new DoAsyncCall(0).execute();
     }
 
 
