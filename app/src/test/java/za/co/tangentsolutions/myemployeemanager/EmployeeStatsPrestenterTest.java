@@ -5,8 +5,15 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import za.co.tangentsolutions.myemployeemanager.activities.EmloyeeStatsActivity;
+import za.co.tangentsolutions.myemployeemanager.models.EmployeeModel;
+import za.co.tangentsolutions.myemployeemanager.models.EmployeeStatModel;
 import za.co.tangentsolutions.myemployeemanager.presenters.EmployeeStatsPrestenter;
+import za.co.tangentsolutions.myemployeemanager.providers.MockProvider;
 import za.co.tangentsolutions.myemployeemanager.views.EmployeeStatsView;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -19,28 +26,50 @@ public class EmployeeStatsPrestenterTest {
     @Mock
     private EmployeeStatsView employeeStatsView;
 
+    List<EmployeeStatModel> testEmployeeStatList;
+    List<EmployeeModel> testEmployeeList;
+    MockProvider mockProvider;
+
     @Before
     public void beforeTest() throws Exception {
         employeeStatsPrestenter = new EmployeeStatsPrestenter(emloyeeStatsActivity);
+        testEmployeeStatList = new ArrayList<>();
+        testEmployeeStatList.add(new EmployeeStatModel("Test Stat", "Test value1"));
+        testEmployeeStatList.add(new EmployeeStatModel("Test Stat2", "Test value2"));
+        testEmployeeStatList.add(new EmployeeStatModel("Test Stat3", "Test value3"));
+        mockProvider = new MockProvider();
+
+        testEmployeeList = new ArrayList<>();
+        testEmployeeList.add(mockProvider.getMockMaleEmployeeWithBirthdayThisMonth());
+        testEmployeeList.add(mockProvider.getMockFemaleEmployeeWithBirthdayThisMonth());
+        testEmployeeList.add(mockProvider.getMockFemaleEmployeeWithBirthdayNotThisMonth());
     }
 
     @Test
     public void shouldShowNumberOfEmployees(){
+        employeeStatsPrestenter.getEmployeeCount(testEmployeeList);
 
+        String actual = ""+testEmployeeList.size();
+
+        assert (actual.equals(employeeStatsPrestenter.getEmployeeCount(testEmployeeList)));
     }
 
     @Test
     public void shouldShowBirthDaysThisMonth(){
-
+        //Mock male1 and female2 have birth days this month
+        String actual = "2";
+        assert (actual.equals(employeeStatsPrestenter.getBirthDaysThisMonthCount(testEmployeeList, 10)));
     }
 
     @Test
     public void shouldShowFemaleEmployees(){
-
+        String actual = "2";
+        assert (actual.equals(employeeStatsPrestenter.getFemaleCount(testEmployeeList)));
     }
 
     @Test
     public void shouldShowMaleEmployees(){
-
+        String actual = "1";
+        assert (actual.equals(employeeStatsPrestenter.getFemaleCount(testEmployeeList)));
     }
 }

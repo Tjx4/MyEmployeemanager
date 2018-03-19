@@ -41,7 +41,7 @@ public class EmployeeStatsPrestenter extends BaseChildPresenter implements Emplo
     public void setEmployeeStats(EmployeeListModel currentEmployee) {
 
         List<EmployeeStatModel> employeeStatsList = new ArrayList<>();
-        employeeStatsList.add(new EmployeeStatModel("Number of employees", ""+currentEmployee.getEmployee().size()));
+        employeeStatsList.add(new EmployeeStatModel("Number of employees", getEmployeeCount(currentEmployee.getEmployee())));
 
         int daysRemainingThisMonth = 11;
         employeeStatsList.add(new EmployeeStatModel("Birth days this month", getBirthDaysThisMonthCount(currentEmployee.getEmployee(), daysRemainingThisMonth)));
@@ -73,6 +73,11 @@ public class EmployeeStatsPrestenter extends BaseChildPresenter implements Emplo
         employeeStatsListModel.setModel(new JSONArray(response));
         employeeStatsListModel.setSuccessful(true);
         return response;
+    }
+
+    @Override
+    public String getEmployeeCount(List<EmployeeModel> employeeList) {
+        return ""+employeeList.size();
     }
 
     @Override

@@ -8,6 +8,51 @@ import za.co.tangentsolutions.myemployeemanager.models.UserModel;
 
 public class MockProvider {
 
+    public EmployeeModel getMockEmployee(){
+        EmployeeModel employeeModel = new EmployeeModel();
+        return employeeModel;
+    }
+
+    public EmployeeModel getMockMaleEmployee(){
+        EmployeeModel employeeModel = getMockEmployee();
+        employeeModel.setGender("M");
+        return employeeModel;
+    }
+
+    public EmployeeModel getMockFemaleEmployee(){
+        EmployeeModel employeeModel = getMockEmployee();
+        employeeModel.setGender("F");
+        return employeeModel;
+    }
+
+    public EmployeeModel getMockFemaleEmployeeWithBirthdayThisMonth(){
+        EmployeeModel employeeModel = getMockFemaleEmployee();
+        employeeModel.setDays_to_birthday(5);
+        return employeeModel;
+    }
+
+    public EmployeeModel getMockFemaleEmployeeWithBirthdayNotThisMonth(){
+        EmployeeModel employeeModel = getMockFemaleEmployee();
+        employeeModel.setDays_to_birthday(15);
+        return employeeModel;
+    }
+
+    public EmployeeModel getMockMaleEmployeeWithBirthdayThisMonth(){
+        EmployeeModel employeeModel = getMockMaleEmployee();
+        employeeModel.setDays_to_birthday(5);
+        return employeeModel;
+    }
+
+    public EmployeeModel getMockMaleEmployeeWithBirthdayNotThisMonth(){
+        EmployeeModel employeeModel = getMockMaleEmployee();
+        employeeModel.setDays_to_birthday(15);
+        return employeeModel;
+    }
+
+    public int getMockRemailningDaysInMonth(){
+        return 10;
+    }
+
     public List<EmployeeModel> getMockEmployees(){
         UserModel user1 = new UserModel();
         user1.setUsername("pravin.gordhan");

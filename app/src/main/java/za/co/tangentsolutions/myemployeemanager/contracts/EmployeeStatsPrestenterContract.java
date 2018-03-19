@@ -13,6 +13,7 @@ public interface EmployeeStatsPrestenterContract {
     void showEmployeeStats();
     String makeFullEmployeeDetailsHttpCall() throws IOException;
     String getEmployeeStats() throws IOException, JSONException;
+    String getEmployeeCount(List<EmployeeModel> employeeList);
     String getBirthDaysThisMonthCount(List<EmployeeModel> employeeList, int daysLeftInMonth);
     String getByGenderCount(List<EmployeeModel> employeeList, String gender);
     String getFemaleCount(List<EmployeeModel> employeeList);
