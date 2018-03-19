@@ -50,6 +50,7 @@ public abstract class BaseSlideMenuActivity extends BaseAsyncActivity implements
             case R.id.action_logout:
                 clearAllCache();
                 goToLogin();
+                break;
             case R.id.action_view_your_profile:
                 Bundle payload = new Bundle();
                 payload.putBoolean(Constants.ISMYPROFILE_KEY, true);
@@ -63,12 +64,18 @@ public abstract class BaseSlideMenuActivity extends BaseAsyncActivity implements
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         MenuItem item1 =  item;
+
+        switch (item.getItemId()){
+            case R.id.action_info:
+                showShortToast("Show instructions");
+                break;
+        }
         return true;
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_employees_dash_board_dashboard_drawer, menu);
+        getMenuInflater().inflate(R.menu.employees_dashboar_overflow_menu_drawer, menu);
         return true;
     }
 

@@ -40,12 +40,20 @@ public class EmployeesDashboardPresenter extends BaseSlideMenuPresenter implemen
     @Override
     public void handleOnFilterSpinnerClicked(EmployeeFilterModel filter) {
         this.filters.add(filter);
+        employeesDashBoardView.setFilterTitle(filter.getTitleText());
         initializeFilteredEmployeesList();
     }
 
     @Override
     public void setCustomFilters(EmployeeFilterFragment filterFragment){
-        this.filters = new BasicEmployeeFiltersProviders().getCustomFilters(filterFragment);
+        List<EmployeeFilterModel> filters = new BasicEmployeeFiltersProviders(activity).getCustomFilters(filterFragment);
+        
+        if(filters.isEmpty()) {
+            employeesDashBoardView.showEmptyFilterWarnigToast(R.string.no_filter_warning_string);
+            return;
+        }
+
+        this.filters = filters;
         initializeFilteredEmployeesList();
     }
 
@@ -128,6 +136,15 @@ public class EmployeesDashboardPresenter extends BaseSlideMenuPresenter implemen
     }
 
     @Override
+    public void showAllEmployees() {
+        employeeListModel = cacheProvider.getCachedEmployeeList();
+
+        if(isCached())
+            showEmployeesList(employeeListModel.getEmployee());
+    }
+
+
+    @Override
     public String getFilteredEmployees() throws IOException, JSONException {
         return getEmployees();
     }
@@ -146,11 +163,9 @@ public class EmployeesDashboardPresenter extends BaseSlideMenuPresenter implemen
 
         if (actionIndex == 0) {
             try{
-                employeesDashBoardView.porpulateBasicFilterSpinner(new BasicEmployeeFiltersProviders().getBasicFilters());
+                employeesDashBoardView.porpulateBasicFilterSpinner(new BasicEmployeeFiltersProviders(activity).getBasicFilters());
 
-                employeeListModel = cacheProvider.getCachedEmployeeList();
-                if(isCached())
-                    showEmployeesList(employeeListModel.getEmployee());
+                showAllEmployees();
             }
             catch (Exception e){
                 e.printStackTrace();
@@ -221,5 +236,4 @@ public class EmployeesDashboardPresenter extends BaseSlideMenuPresenter implemen
         filters.clear();
         super.afterAsyncCall(actionIndex);
     }
-
 }

@@ -3,39 +3,56 @@ package za.co.tangentsolutions.myemployeemanager.providers;
 import java.util.ArrayList;
 import java.util.List;
 import za.co.tangentsolutions.myemployeemanager.R;
+import za.co.tangentsolutions.myemployeemanager.activities.BaseActivity;
 import za.co.tangentsolutions.myemployeemanager.fragments.EmployeeFilterFragment;
 import za.co.tangentsolutions.myemployeemanager.models.EmployeeFilterModel;
 
 public class BasicEmployeeFiltersProviders {
 
+    private BaseActivity activity;
+
+    public BasicEmployeeFiltersProviders(BaseActivity activity) {
+        this.activity = activity;
+    }
+
     public List<EmployeeFilterModel> getBasicFilters(){
         EmployeeFilterModel femaleOnlyFilter = new EmployeeFilterModel();
         femaleOnlyFilter.setDisplayText("Show only women");
         femaleOnlyFilter.setValue("F");
+        femaleOnlyFilter.setTitleText(activity.getString(R.string.women_only_custom_filter_display));
         femaleOnlyFilter.setIcon(R.drawable.female_icon);
         femaleOnlyFilter.setKey(EmployeeFilterProvider.gender.getFilterKey());
 
         EmployeeFilterModel maleOnlyFilter = new EmployeeFilterModel();
         maleOnlyFilter.setDisplayText("Show only men");
         maleOnlyFilter.setValue("M");
+        maleOnlyFilter.setTitleText(activity.getString(R.string.men_only_custom_filter_display));
         maleOnlyFilter.setIcon(R.drawable.male_icon);
         maleOnlyFilter.setKey(EmployeeFilterProvider.gender.getFilterKey());
 
         EmployeeFilterModel birthdayMonthFilter = new EmployeeFilterModel();
         birthdayMonthFilter.setDisplayText("Show birth days this month");
         birthdayMonthFilter.setValue("1");
+        birthdayMonthFilter.setTitleText(activity.getString(R.string.birth_days_custom_filter_display));
         birthdayMonthFilter.setIcon(EmployeeFilterProvider.birthDateRange.getIcon());
         birthdayMonthFilter.setKey(EmployeeFilterProvider.birthDateRange.getFilterKey());
 
         EmployeeFilterModel startedThisMonthFilter = new EmployeeFilterModel();
         startedThisMonthFilter.setDisplayText("Show people who started this month");
         startedThisMonthFilter.setValue("1");
+        startedThisMonthFilter.setTitleText(activity.getString(R.string.this_month_custom_filter_display));
         startedThisMonthFilter.setIcon(EmployeeFilterProvider.startDate.getIcon());
         startedThisMonthFilter.setKey(EmployeeFilterProvider.startDate.getFilterKey());
 
         EmployeeFilterModel avancedFilter = new EmployeeFilterModel();
-        avancedFilter.setDisplayText("Advanced filter");
+        avancedFilter.setDisplayText("Custom filter");
+        avancedFilter.setTitleText(activity.getString(R.string.custom_filter_display));
         avancedFilter.setIcon(R.drawable.advanced_icon);
+
+        EmployeeFilterModel noFilter = new EmployeeFilterModel();
+        noFilter.setDisplayText("Show all");
+        noFilter.setTitleText(activity.getString(R.string.showing_all));
+        noFilter.setIcon(R.drawable.all_icon);
 
         List<EmployeeFilterModel> basicFilters = new ArrayList<>();
         basicFilters.add(femaleOnlyFilter);
@@ -43,6 +60,7 @@ public class BasicEmployeeFiltersProviders {
         basicFilters.add(birthdayMonthFilter);
         basicFilters.add(startedThisMonthFilter);
         basicFilters.add(avancedFilter);
+        basicFilters.add(noFilter);
 
         return basicFilters;
     }
@@ -78,13 +96,26 @@ public class BasicEmployeeFiltersProviders {
         emailContainsFilter.setValue(filterFragment.emailContainsFilter());
         emailContainsFilter.setKey(EmployeeFilterProvider.emailContains.getFilterKey());
 
-        customFilters.add(genderFilter);
-        customFilters.add(raceFilter);
-        customFilters.add(positionFilter);
-        customFilters.add(startDateFilter);
-        customFilters.add(userFilter);
-        customFilters.add(birthDateRangeFilter);
-        customFilters.add(emailContainsFilter);
+        if(!genderFilter.getValue().isEmpty())
+            customFilters.add(genderFilter);
+
+        if(!raceFilter.getValue().isEmpty())
+            customFilters.add(raceFilter);
+
+        if(!positionFilter.getValue().isEmpty())
+            customFilters.add(positionFilter);
+
+        if(!startDateFilter.getValue().isEmpty())
+            customFilters.add(startDateFilter);
+
+        if(!userFilter.getValue().isEmpty())
+            customFilters.add(userFilter);
+
+        if(!birthDateRangeFilter.getValue().isEmpty())
+            customFilters.add(birthDateRangeFilter);
+
+        if(!emailContainsFilter.getValue().isEmpty())
+            customFilters.add(emailContainsFilter);
 
         return customFilters;
     }

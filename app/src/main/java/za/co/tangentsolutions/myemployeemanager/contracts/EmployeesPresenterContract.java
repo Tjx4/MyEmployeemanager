@@ -16,6 +16,7 @@ public interface EmployeesPresenterContract extends BasePresenterContract {
     void showEmployeesList(List<EmployeeModel> employeesList);
     String getEmployees() throws IOException, JSONException;
     String getFilteredEmployees() throws IOException, JSONException;
+    void showAllEmployees();
     String makeEmployeesHttpCall() throws IOException;
     String checkEmployeeListUpdate() throws IOException, JSONException;
     boolean isNewEmployeeAvailable(EmployeeListModel remoteEmployeeList);

@@ -37,7 +37,7 @@ public class EmployeeFilterFragment  extends DialogFragmentProvider {
     }
 
     public String getGenderFilter(){
-        return gender;
+        return (gender == null)? "" : gender;
     }
 
     public String getRaceFilter(){
@@ -70,13 +70,8 @@ public class EmployeeFilterFragment  extends DialogFragmentProvider {
         baseActivity = (BaseActivity) context;
     }
 
-
     @Override
     protected void onFragmentViewClickedEvent(View view) {
-        if(false){
-            super.onFragmentViewClickedEvent(view);
-        }
-
-        gender = view.getTag().toString();
+         gender = view.getTag().toString();
     }
 }
