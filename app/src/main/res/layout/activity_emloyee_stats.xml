@@ -6,4 +6,12 @@
     android:layout_height="match_parent"
     tools:context="za.co.tangentsolutions.myemployeemanager.activities.EmloyeeStatsActivity">
 
+
+    <ListView
+        android:id="@+id/lstVEmployeeStat"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="#DDD"
+        android:dividerHeight="1dp"/>
+
 </FrameLayout>
