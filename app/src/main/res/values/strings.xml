@@ -36,4 +36,5 @@
     <string name="female">Female</string>
     <string name="male">Male</string>
     <string name="enter_postion">Enter postion</string>
+    <string name="no_filter_warning_string">You did not add any filters</string>
 </resources>

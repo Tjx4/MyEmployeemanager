@@ -19,8 +19,6 @@ import za.co.tangentsolutions.myemployeemanager.fragments.EmployeeFilterFragment
 import za.co.tangentsolutions.myemployeemanager.models.EmployeeFilterModel;
 import za.co.tangentsolutions.myemployeemanager.models.EmployeeModel;
 import za.co.tangentsolutions.myemployeemanager.presenters.EmployeesDashboardPresenter;
-import za.co.tangentsolutions.myemployeemanager.providers.BasicEmployeeFiltersProviders;
-import za.co.tangentsolutions.myemployeemanager.providers.EmployeeFilterProvider;
 import za.co.tangentsolutions.myemployeemanager.providers.EmployeeProfileProvider;
 import za.co.tangentsolutions.myemployeemanager.views.EmployeesDashBoardView;
 
@@ -41,6 +39,11 @@ public class EmployeesDashBoardActivity extends BaseSlideMenuActivity implements
         dropArraw = findViewById(R.id.imgDropArraw);
         filterTitleTxt = findViewById(R.id.txtFilterTitle);
         setPresenter(new EmployeesDashboardPresenter(this));
+    }
+
+    @Override
+    public EmployeeFilterFragment getFilterFragment() {
+        return filterFragment;
     }
 
     @Override
@@ -83,6 +86,12 @@ public class EmployeesDashBoardActivity extends BaseSlideMenuActivity implements
             filterFragment.dismiss();
 
         getPresenter().setCustomFilters(filterFragment);
+    }
+
+    @Override
+    public void showEmptyFilterWarnigToast(int warningStringRes) {
+        String warningMessage = getString(warningStringRes);
+        showShortToast(warningMessage);
     }
 
     @Override

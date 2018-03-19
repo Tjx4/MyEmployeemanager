@@ -10,6 +10,9 @@ import za.co.tangentsolutions.myemployeemanager.fragments.EmployeeFilterFragment
 import za.co.tangentsolutions.myemployeemanager.presenters.EmployeesDashboardPresenter;
 import za.co.tangentsolutions.myemployeemanager.views.EmployeesDashBoardView;
 
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
 @RunWith(MockitoJUnitRunner.class)
 public class EmployeesDashboardPresenterTest {
 
@@ -46,6 +49,9 @@ public class EmployeesDashboardPresenterTest {
 
     @Test
     public void shouldShowFilteredList(){
-        //verify(employeesDashBoardView).showEmptyUsernameError(R.string.invalid_username_error_message);
+        when(employeesDashBoardView.getFilterFragment().getGenderFilter()).thenReturn("");
+        employeesDashBoardView.onFilterButtonClicked(null);
+
+        verify(employeesDashBoardView).showEmptyFilterWarnigToast(R.string.no_filter_warning_string);
     }
 }

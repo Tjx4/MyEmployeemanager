@@ -45,7 +45,14 @@ public class EmployeesDashboardPresenter extends BaseSlideMenuPresenter implemen
 
     @Override
     public void setCustomFilters(EmployeeFilterFragment filterFragment){
-        this.filters = new BasicEmployeeFiltersProviders().getCustomFilters(filterFragment);
+        List<EmployeeFilterModel> filters = new BasicEmployeeFiltersProviders().getCustomFilters(filterFragment);
+        
+        if(filters.isEmpty()) {
+            employeesDashBoardView.showEmptyFilterWarnigToast(R.string.no_filter_warning_string);
+            return;
+        }
+
+        this.filters = filters;
         initializeFilteredEmployeesList();
     }
 
