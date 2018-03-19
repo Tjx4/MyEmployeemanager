@@ -1,8 +1,20 @@
 package za.co.tangentsolutions.myemployeemanager.models;
 
-/**
- * Created by Tshepo on 3/19/2018.
- */
-
 public class EmployeeStatModel {
+
+    private String key;
+    private String value;
+
+    public EmployeeStatModel(String key, String value) {
+        this.value = value;
+        this.key = key;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public String getValue() {
+        return value;
+    }
 }
