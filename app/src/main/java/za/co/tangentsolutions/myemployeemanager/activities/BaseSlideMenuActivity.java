@@ -50,6 +50,7 @@ public abstract class BaseSlideMenuActivity extends BaseAsyncActivity implements
             case R.id.action_logout:
                 clearAllCache();
                 goToLogin();
+                break;
             case R.id.action_view_your_profile:
                 Bundle payload = new Bundle();
                 payload.putBoolean(Constants.ISMYPROFILE_KEY, true);

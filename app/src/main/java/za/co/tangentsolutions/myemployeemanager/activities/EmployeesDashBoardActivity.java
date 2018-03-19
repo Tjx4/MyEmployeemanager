@@ -133,6 +133,14 @@ public class EmployeesDashBoardActivity extends BaseSlideMenuActivity implements
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         super.onNavigationItemSelected(item);
+
+        int itemId = item.getItemId();
+        switch (itemId){
+            case R.id.action_filter_employees:
+                openEmployeeFilterDialog();
+            break;
+        }
+
         return true;
     }
 
