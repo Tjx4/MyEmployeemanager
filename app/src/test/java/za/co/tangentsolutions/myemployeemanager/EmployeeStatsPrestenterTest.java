@@ -35,7 +35,12 @@ public class EmployeeStatsPrestenterTest {
     }
 
     @Test
-    public void showPositionAndEmployeesInSimilarPosition(){
+    public void shouldShowFemaleEmployees(){
+
+    }
+
+    @Test
+    public void shouldShowMaleEmployees(){
 
     }
 }

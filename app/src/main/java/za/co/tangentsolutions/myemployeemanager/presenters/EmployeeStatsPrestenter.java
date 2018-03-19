@@ -47,7 +47,7 @@ public class EmployeeStatsPrestenter extends BaseChildPresenter implements Emplo
         employeeStatsList.add(new EmployeeStatModel("Birth days this month", getBirthDaysThisMonthCount(currentEmployee.getEmployee(), daysRemainingThisMonth)));
 
         employeeStatsList.add(new EmployeeStatModel("Female employees", getFemaleCount(currentEmployee.getEmployee()) ));
-        employeeStatsList.add(new EmployeeStatModel("Male employees", getFemaleCount(currentEmployee.getEmployee()) ));
+        employeeStatsList.add(new EmployeeStatModel("Male employees", getMaleCount(currentEmployee.getEmployee()) ));
 
         this.employeeStatsList = employeeStatsList;
     }
@@ -80,7 +80,7 @@ public class EmployeeStatsPrestenter extends BaseChildPresenter implements Emplo
         int count = 0;
 
         for(int i = 0; i < employeeList.size(); ++i){
-            if( employeeList.get(i).getDays_to_birthday() < daysLeftInMonth)
+            if( employeeList.get(i).getDays_to_birthday() <= daysLeftInMonth)
                 count++;
         }
         return ""+count;
