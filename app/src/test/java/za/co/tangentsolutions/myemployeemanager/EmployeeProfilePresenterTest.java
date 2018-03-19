@@ -6,7 +6,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
+import java.util.ArrayList;
+import java.util.List;
 import za.co.tangentsolutions.myemployeemanager.activities.EmployeeProfileActivity;
+import za.co.tangentsolutions.myemployeemanager.models.EmployeeDetailsModel;
 import za.co.tangentsolutions.myemployeemanager.presenters.EmployeeProfilePresenter;
 import za.co.tangentsolutions.myemployeemanager.views.EmployeeProfileView;
 
@@ -20,10 +23,22 @@ public class EmployeeProfilePresenterTest {
     @Mock
     private EmployeeProfileActivity employeeProfileActivity;
 
+    List<EmployeeDetailsModel> testEmployeeStatList;
+
     @Before
     public void beforeTest() throws Exception {
         employeeProfilePresenter = new EmployeeProfilePresenter(employeeProfileActivity);
+        testEmployeeStatList =  new ArrayList<>();
+        testEmployeeStatList.add(new EmployeeDetailsModel("Test tag1", "Test value1"));
+        testEmployeeStatList.add(new EmployeeDetailsModel("Test tag1", "Test value2"));
     }
+
+    @Test
+    public void shouldPorpulateList(){
+        employeeProfileView.porpulateDetailsListView(testEmployeeStatList);
+        assert (employeeProfileView.getListViewItemCount() == employeeProfilePresenter.getDetailsCount());
+    }
+
 
     @Test
     public void shouldShowFullProfileIfIsCurrentUser(){

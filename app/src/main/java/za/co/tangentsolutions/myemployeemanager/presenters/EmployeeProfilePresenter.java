@@ -40,7 +40,7 @@ public class EmployeeProfilePresenter extends BaseChildPresenter implements Empl
         }
         else {
             setEmployeeDetails(getEmployeeFromBundle(payloadBundle));
-            employeeProfileView.showEmployeeDetails(getUserDetails());
+            employeeProfileView.porpulateDetailsListView(getUserDetails());
         }
     }
     @Override
@@ -163,7 +163,7 @@ public class EmployeeProfilePresenter extends BaseChildPresenter implements Empl
             switch (actionIndex){
                 case 0:
                     setEmployeeDetails(fullEmployeeProfileModel.getEmployee());
-                    employeeProfileView.showEmployeeDetails(getUserDetails());
+                    employeeProfileView.porpulateDetailsListView(getUserDetails());
                     detailsCount = getUserDetails().size();
                     fullEmployeeProfileModel.setSuccessful(false);
                     break;

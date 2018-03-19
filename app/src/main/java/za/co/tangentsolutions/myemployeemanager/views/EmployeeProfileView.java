@@ -10,6 +10,6 @@ public interface EmployeeProfileView extends BaseAsyncView {
     ImageView getTakePicImg();
     Bundle getPayloadBundle();
     void showAdminTools();
-    void showEmployeeDetails(List<EmployeeDetailsModel> employeeDetailsList);
+    void porpulateDetailsListView(List<EmployeeDetailsModel> employeeDetailsList);
     int getListViewItemCount();
 }

@@ -48,7 +48,7 @@ public class EmployeeProfileActivity extends BaseChildActivity implements Employ
     }
 
     @Override
-    public void showEmployeeDetails(List<EmployeeDetailsModel> employeeDetailsList) {
+    public void porpulateDetailsListView(List<EmployeeDetailsModel> employeeDetailsList) {
         EmployeeDetailsAdapter employeeDetailsAdapter = new EmployeeDetailsAdapter(this, R.layout.employee_details_view, employeeDetailsList);
 
         employeeInfoLstV = findViewById(R.id.lstvEmployeeInfo);
