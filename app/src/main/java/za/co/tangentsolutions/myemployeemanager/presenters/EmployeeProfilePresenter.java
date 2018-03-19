@@ -146,7 +146,6 @@ public class EmployeeProfilePresenter extends BaseChildPresenter implements Empl
         switch (actionIndex){
             case 0:
                 response = getfullEmployeeDetails();
-                fullEmployeeProfileModel.setSuccessful(false);
                 break;
         }
 
@@ -160,6 +159,7 @@ public class EmployeeProfilePresenter extends BaseChildPresenter implements Empl
                 case 0:
                     setEmployeeDetails(fullEmployeeProfileModel.getEmployee());
                     employeeProfileView.showEmployeeDetails(getUserDetails());
+                    fullEmployeeProfileModel.setSuccessful(false);
                     break;
             }
         }
