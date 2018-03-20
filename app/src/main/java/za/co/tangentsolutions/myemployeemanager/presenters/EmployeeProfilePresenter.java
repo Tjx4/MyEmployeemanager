@@ -15,7 +15,7 @@ import za.co.tangentsolutions.myemployeemanager.models.EmployeeModel;
 import za.co.tangentsolutions.myemployeemanager.models.FullEmployeeProfileModel;
 import za.co.tangentsolutions.myemployeemanager.models.PositionModel;
 import za.co.tangentsolutions.myemployeemanager.models.UserModel;
-import za.co.tangentsolutions.myemployeemanager.providers.UserClient;
+import za.co.tangentsolutions.myemployeemanager.providers.RetrofitProvider;
 import za.co.tangentsolutions.myemployeemanager.views.EmployeeProfileView;
 
 public class EmployeeProfilePresenter extends BaseChildPresenter implements EmployeeProfilePresenterContract {
@@ -59,8 +59,8 @@ public class EmployeeProfilePresenter extends BaseChildPresenter implements Empl
     public void fetchFullUserProfile(){
         employeeProfileView.showLoadingDialog(activity.getString(R.string.fetching_employees));
 
-        UserClient userClient = getUserClient();
-        Call<EmployeeModel> call = userClient.getEmployee(getToken());
+        RetrofitProvider retrofitProvider = getRetrofitProvider();
+        Call<EmployeeModel> call = retrofitProvider.getEmployee(getToken());
 
         call.enqueue(new Callback<EmployeeModel>() {
             @Override

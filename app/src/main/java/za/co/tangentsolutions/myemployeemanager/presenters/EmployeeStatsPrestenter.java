@@ -13,7 +13,7 @@ import za.co.tangentsolutions.myemployeemanager.models.EmployeeListModel;
 import za.co.tangentsolutions.myemployeemanager.models.EmployeeModel;
 import za.co.tangentsolutions.myemployeemanager.models.EmployeeStatModel;
 import za.co.tangentsolutions.myemployeemanager.models.EmployeeStatsListModel;
-import za.co.tangentsolutions.myemployeemanager.providers.UserClient;
+import za.co.tangentsolutions.myemployeemanager.providers.RetrofitProvider;
 import za.co.tangentsolutions.myemployeemanager.views.EmployeeStatsView;
 
 public class EmployeeStatsPrestenter extends BaseChildPresenter implements EmployeeStatsPrestenterContract {
@@ -43,8 +43,8 @@ public class EmployeeStatsPrestenter extends BaseChildPresenter implements Emplo
     public void fetchRemoteEmployeesAndShowStats(){
         employeeStatsView.showLoadingDialog(activity.getString(R.string.fetching_employees));
 
-        UserClient userClient = getUserClient();
-        Call<List<EmployeeModel>> call = userClient.getEmployeesList(getToken(), new HashMap<String, String>());
+        RetrofitProvider retrofitProvider = getRetrofitProvider();
+        Call<List<EmployeeModel>> call = retrofitProvider.getEmployeesList(getToken(), new HashMap<String, String>());
 
         call.enqueue(new Callback<List<EmployeeModel>>() {
             @Override

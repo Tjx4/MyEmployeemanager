@@ -9,7 +9,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import za.co.tangentsolutions.myemployeemanager.activities.BaseActivity;
 import za.co.tangentsolutions.myemployeemanager.constants.Constants;
-import za.co.tangentsolutions.myemployeemanager.providers.UserClient;
+import za.co.tangentsolutions.myemployeemanager.providers.RetrofitProvider;
 
 public abstract class BaseAsyncPresenter extends BasePresenter{
 
@@ -25,7 +25,7 @@ public abstract class BaseAsyncPresenter extends BasePresenter{
     protected List<View> activeViews;
     protected View clickedView;
     protected boolean isFromServer, isCheckingUpdates;
-    private UserClient userClient;
+    private RetrofitProvider retrofitProvider;
 
     public BaseAsyncPresenter(BaseActivity activity) {
         super(activity);
@@ -82,10 +82,10 @@ public abstract class BaseAsyncPresenter extends BasePresenter{
                 .addConverterFactory(GsonConverterFactory.create());
         Retrofit retrofit = builder.build();
 
-        userClient = retrofit.create(UserClient.class);
+        retrofitProvider = retrofit.create(RetrofitProvider.class);
     }
 
-    public UserClient getUserClient(){
-        return userClient;
+    public RetrofitProvider getRetrofitProvider(){
+        return retrofitProvider;
     }
 }

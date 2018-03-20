@@ -14,7 +14,7 @@ import za.co.tangentsolutions.myemployeemanager.models.EmployeeListModel;
 import za.co.tangentsolutions.myemployeemanager.models.EmployeeModel;
 import za.co.tangentsolutions.myemployeemanager.providers.BasicEmployeeFiltersProviders;
 import za.co.tangentsolutions.myemployeemanager.R;
-import za.co.tangentsolutions.myemployeemanager.providers.UserClient;
+import za.co.tangentsolutions.myemployeemanager.providers.RetrofitProvider;
 import za.co.tangentsolutions.myemployeemanager.views.EmployeesDashBoardView;
 import za.co.tangentsolutions.myemployeemanager.contracts.EmployeesPresenterContract;
 
@@ -154,8 +154,8 @@ public class EmployeesDashboardPresenter extends BaseSlideMenuPresenter implemen
         if(!isCheckingUpdates)
             employeesDashBoardView.showLoadingDialog(activity.getString(R.string.fetching_employees));
 
-        UserClient userClient = getUserClient();
-        Call<List<EmployeeModel>> call = userClient.getEmployeesList(getToken(), params);
+        RetrofitProvider retrofitProvider = getRetrofitProvider();
+        Call<List<EmployeeModel>> call = retrofitProvider.getEmployeesList(getToken(), params);
 
         call.enqueue(new Callback<List<EmployeeModel>>() {
             @Override

@@ -10,7 +10,7 @@ import za.co.tangentsolutions.myemployeemanager.contracts.LoginPresenterContract
 import za.co.tangentsolutions.myemployeemanager.models.LoginModel;
 import za.co.tangentsolutions.myemployeemanager.models.LoginObject;
 import za.co.tangentsolutions.myemployeemanager.models.UserModel;
-import za.co.tangentsolutions.myemployeemanager.providers.UserClient;
+import za.co.tangentsolutions.myemployeemanager.providers.RetrofitProvider;
 import za.co.tangentsolutions.myemployeemanager.views.LoginView;
 
 public class LoginPresenter extends BaseAsyncPresenter implements LoginPresenterContract {
@@ -67,8 +67,8 @@ public class LoginPresenter extends BaseAsyncPresenter implements LoginPresenter
         loginView.showLoadingDialog(activity.getString(R.string.logging_in));
 
         LoginObject loginObject = new LoginObject(username, password);
-        UserClient userClien = getUserClient();
-        Call<LoginModel> call1 = userClien.loginUser(loginObject);
+        RetrofitProvider userClien = getRetrofitProvider();
+        Call<LoginModel> call1 = userClien.getUserLogin(loginObject);
         call1.enqueue(new Callback<LoginModel>() {
             @Override
             public void onResponse(Call<LoginModel> call, Response<LoginModel> response) {
@@ -95,7 +95,7 @@ public class LoginPresenter extends BaseAsyncPresenter implements LoginPresenter
 
     @Override
     public void makeUserDetailsCall(){
-        UserClient userClien = getUserClient();
+        RetrofitProvider userClien = getRetrofitProvider();
         Call<UserModel> call = userClien.getUser(getToken());
 
         call.enqueue(new Callback<UserModel>() {
