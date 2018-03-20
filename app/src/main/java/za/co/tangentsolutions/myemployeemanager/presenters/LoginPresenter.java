@@ -75,6 +75,7 @@ public class LoginPresenter extends BaseAsyncPresenter implements LoginPresenter
                 if(response.isSuccessful()){
                     LoginModel loginModel = response.body();
                     String token = loginModel.getToken();
+                    cacheProvider.cacheToken(token);
                     setToken(token);
                     makeUserDetailsCall();
                 }

@@ -33,7 +33,6 @@ public class EmployeeProfilePresenter extends BaseChildPresenter implements Empl
         super(employeeProfileActivity);
         this.employeeProfileView = employeeProfileActivity;
         employeeDetailsList = new ArrayList<>();
-        fullEmployeeProfileModel = new FullEmployeeProfileModel();
         Bundle payloadBundle = employeeProfileActivity.getPayloadBundle();
         isMyprofile = payloadBundle.getBoolean(Constants.ISMYPROFILE_KEY);
 
@@ -68,6 +67,10 @@ public class EmployeeProfilePresenter extends BaseChildPresenter implements Empl
             public void onResponse(Call<EmployeeModel> call, Response<EmployeeModel> response) {
                 if(response.isSuccessful()){
                     EmployeeModel fullEmployeeProfile = response.body();
+
+                    if(fullEmployeeProfileModel == null)
+                        fullEmployeeProfileModel = new FullEmployeeProfileModel();
+
                     fullEmployeeProfileModel.setEmployee(fullEmployeeProfile);
 
                     setEmployeeDetails(fullEmployeeProfileModel.getEmployee());

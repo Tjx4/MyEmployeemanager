@@ -34,7 +34,6 @@ public class EmployeesDashboardPresenter extends BaseSlideMenuPresenter implemen
     public EmployeesDashboardPresenter(EmployeesDashBoardActivity employeesDashboardActivity) {
         super(employeesDashboardActivity);
         this.employeesDashBoardView = employeesDashboardActivity;
-        employeeListModel = new EmployeeListModel();
         filters = new ArrayList<>();
         params = new HashMap<>();
         initializeEmployeeListAndBasicFilters();
@@ -163,6 +162,9 @@ public class EmployeesDashboardPresenter extends BaseSlideMenuPresenter implemen
             public void onResponse(Call<List<EmployeeModel>> call, Response<List<EmployeeModel>> response) {
                 if(response.isSuccessful()){
                     List<EmployeeModel> remoteEmployeeList = response.body();
+
+                    if(employeeListModel == null)
+                        employeeListModel = new EmployeeListModel();
 
                     employeeListModel.setEmployee(remoteEmployeeList);
 

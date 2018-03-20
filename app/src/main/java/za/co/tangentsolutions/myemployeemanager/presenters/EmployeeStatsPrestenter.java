@@ -31,7 +31,6 @@ public class EmployeeStatsPrestenter extends BaseChildPresenter implements Emplo
         super(activity);
         employeeStatsView = (EmployeeStatsView)activity;
         employeeStatsList = new ArrayList<>();
-        employeeStatsListModel = new EmployeeStatsListModel();
         fetchRemoteEmployeesAndShowStats();
     }
 
@@ -54,6 +53,9 @@ public class EmployeeStatsPrestenter extends BaseChildPresenter implements Emplo
                     List<EmployeeModel> remoteEmployeeList = response.body();
                     EmployeeListModel employeeListModel = new EmployeeListModel();
                     employeeListModel.setEmployee(remoteEmployeeList);
+
+                    if(employeeStatsListModel == null)
+                        employeeStatsListModel = new EmployeeStatsListModel();
 
                     employeeStatsListModel.setEmployeeStatsList(employeeListModel);
                     setEmployeeStats(employeeStatsListModel.getEmployeeStatsList());
