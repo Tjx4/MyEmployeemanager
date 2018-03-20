@@ -88,7 +88,7 @@ public class LoginPresenter extends BaseAsyncPresenter implements LoginPresenter
 
             @Override
             public void onFailure(Call<LoginModel> call, Throwable t) {
-
+                loginView.showHttpCallError(activity.getString((R.string.connection_error_message)));
             }
         });
     }
