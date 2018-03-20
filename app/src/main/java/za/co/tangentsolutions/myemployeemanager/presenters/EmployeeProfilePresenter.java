@@ -57,7 +57,7 @@ public class EmployeeProfilePresenter extends BaseChildPresenter implements Empl
 
     @Override
     public void fetchFullUserProfile(){
-        employeeProfileView.showLoadingDialog(activity.getString(R.string.fetching_employees));
+        employeeProfileView.showLoadingDialog(activity.getString(R.string.loading_your_profile));
 
         RetrofitProvider retrofitProvider = getRetrofitProvider();
         Call<EmployeeModel> call = retrofitProvider.getEmployee(getToken());

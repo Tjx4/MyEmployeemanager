@@ -41,7 +41,7 @@ public class EmployeeStatsPrestenter extends BaseChildPresenter implements Emplo
 
     @Override
     public void fetchRemoteEmployeesAndShowStats(){
-        employeeStatsView.showLoadingDialog(activity.getString(R.string.fetching_employees));
+        employeeStatsView.showLoadingDialog(activity.getString(R.string.loading_stats));
 
         RetrofitProvider retrofitProvider = getRetrofitProvider();
         Call<List<EmployeeModel>> call = retrofitProvider.getEmployeesList(getToken(), new HashMap<String, String>());
