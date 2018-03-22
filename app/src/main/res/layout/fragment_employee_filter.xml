@@ -76,7 +76,6 @@
         android:id="@+id/txtRace"
         style="@style/filterEditText"
         android:inputType="textPersonName"
-        android:digits="BCIWN"
         android:maxLength="1"
         android:hint="@string/race"/>
 
